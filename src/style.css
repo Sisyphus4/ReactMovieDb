@@ -1,0 +1,92 @@
+h1, p {
+  font-family: Lato;
+}
+#root{
+  background-image: url('../images/Background.jpg');
+  background-color: #bcffeb;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow:scroll;
+}
+.popularMovies{
+  display:flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+}
+.oneOfMovies{
+  width:250px;
+  height: 600px;
+  border: solid 1px;
+  padding: 15px;
+}
+.theMovie{
+  padding-left: 50px;
+}
+img{
+  margin: auto;
+}
+.cast{
+  margin-top:0;
+  margin-left:0;
+}
+.navBar{
+  font-weight: bolder;
+  font-size: 23px;  
+  background-color: rgb(12, 94, 100);
+}
+.about{
+  padding:30px;
+  font-size:30px;
+}
+.about a{
+ display:block;
+}
+.about img{
+  height:600px;
+  width:400px;
+  margin-top:-16%;
+  margin-left:40%;
+}
+.comparedMovies{
+  display: flex;
+  flex-direction: row;
+  font-size:30px;
+}
+.navButton{
+  background-color: rgb(173, 247, 240); /* Green */
+  border: solid 1px black;
+  color: white;
+  padding: 9px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.link{
+  text-decoration: none;
+}
+.oneOfComparedMovies{
+  height: 100%;
+  width: 30%;
+
+}
+.oneOfComparedMovies h1{
+  height: 100px;
+  width: 100%;
+
+}
+.compareButton{
+  background-color: rgb(173, 247, 240); /* Green */
+  border: solid 1px black;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  border-radius: 4px;
+  height: 40px;
+  width: 100px;
+}
