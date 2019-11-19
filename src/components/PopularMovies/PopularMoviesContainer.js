@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import { getMovies } from '../../actions/getMovies';
-import { ShowMovies } from './ShowMovies';
-import { getMovie } from '../../actions/getMovie';
-import { setCompareFunc } from '../../actions/setCompare';
+import { ShowMovies } from './PopularMovies';
 import { setComparedIdFunc } from '../../actions/setComparedId';
 
 
@@ -19,12 +17,6 @@ const mapDispatchToProps = dispatch => {
     setComparedIdFunc: (id) => {
       dispatch(setComparedIdFunc(id));
     },
-    // getCurrentMovie: (id, movies) => {
-    //   dispatch(getMovie(id, movies));
-    // },
-    // compare: (prop) => {
-    //   dispatch(setCompareFunc(prop));
-    // }
   };
 };
 

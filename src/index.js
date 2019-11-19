@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './style.css';
-import {ConnectedAppRouter} from './components/AppRouter';
+import { AppRouter } from './components/AppRouter';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div>
         <ReactNotifications />
-        <ConnectedAppRouter/>
+        <AppRouter />
       </div>
     );
   }

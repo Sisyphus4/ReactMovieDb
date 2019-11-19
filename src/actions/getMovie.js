@@ -5,15 +5,18 @@ import {
   GET_EXISTED_MOVIE_SUCCESS,
 } from '../types/types.js';
 import axios from 'axios';
-import helper from './helper';
+import searchMovie from '../utilities/search';
 
-export const getMovie = (id, detailedMovies) => {
-  let neededMovie = helper(id, detailedMovies);
-  return !!neededMovie //if we found one, then send him otherwise make a request
-    ? dispatch => {
-      dispatch(getExistedMovieSuccess(neededMovie))
+export const getMovie = (id) => {
+  return (dispatch, getState) => {
+    //Check if the movie is already downloaded
+    let neededMovie = searchMovie(id, getState().movieReducer.detailedMovies);
+    if (!!neededMovie) {
+      //If it is then just return the existed one
+      dispatch(getExistedMovieSuccess(neededMovie));
     }
-    : dispatch => {
+    else {
+      //Otherwise download the new one
       dispatch(getMoviesStarted());
       axios
         .get('https://api.themoviedb.org/3/movie/' + id + '?api_key=619815e4b2022dff08a72fdc13100b01')
@@ -23,8 +26,10 @@ export const getMovie = (id, detailedMovies) => {
         .catch(err => {
           dispatch(getMoviesFailure(err.message));
         });
-    };
-};
+    }
+  }
+}
+
 
 const getMovieSuccess = movie => ({
   type: GET_MOVIE_SUCCESS,
