@@ -5,15 +5,18 @@ import {
   GET_MOVIES_FAILURE,
 } from '../types/types.js';
 import axios from 'axios';
-import helper from './helper';
+import searchCact from '../utilities/search';
 
-export const getCast = (id, storedCast) => {
-  let neededCast = helper(id, storedCast);
-  return !!neededCast
-    ? dispatch => {
+export const getCast = (id) => {
+  return (dispatch, getState) => {
+    //Check if the cast is already downloaded
+    let neededCast = searchCact(id, getState().movieReducer.storedCast);
+    if (!!neededCast) {
+      //If it is then just return the existed one
       dispatch(getExistedCastSuccess(neededCast))
     }
-    : dispatch => {
+    else {
+      //Otherwise download the new one
       dispatch(getMoviesStarted());
       axios
         .get('https://api.themoviedb.org/3/movie/' + id + '/credits?api_key=619815e4b2022dff08a72fdc13100b01')
@@ -24,6 +27,7 @@ export const getCast = (id, storedCast) => {
           dispatch(getMoviesFailure(err.message));
         });
     }
+  }
 };
 
 const getCastSuccess = (cast) => ({
@@ -34,6 +38,7 @@ const getExistedCastSuccess = cast => ({
   type: GET_EXISTED_CAST_SUCCESS,
   payload: cast,
 });
+//Using the same actions as in movies because they doesn't differ
 const getMoviesStarted = () => ({
   type: GET_MOVIES_STARTED
 });

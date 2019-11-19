@@ -2,7 +2,7 @@ h1, p {
   font-family: Lato;
 }
 #root{
-  background-image: url('../images/Background.jpg');
+  background-image: url('./assets/images/Background.jpg');
   background-color: #bcffeb;
   position: fixed;
   top: 0;
@@ -89,4 +89,8 @@ img{
   border-radius: 4px;
   height: 40px;
   width: 100px;
+}
+.compareDiv{
+  height: 46%;
+  width: 50px;
 }

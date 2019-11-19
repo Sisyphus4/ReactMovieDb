@@ -1,30 +1,28 @@
 import { connect } from 'react-redux';
 import { getMovie } from '../../actions/getMovie';
 import { getCast } from '../../actions/getCast';
-import { setCompareFunc } from '../../actions/setCompare';
-import {Movie} from './Movie';
+import { setComparedIdFunc } from '../../actions/setComparedId';
+import { Movie } from './Movie';
 
-const mapStateToProps = state => ({ 
+const mapStateToProps = state => ({
   movie: state.movieReducer.movie,
-  movies: state.movieReducer.detailedMovies,
-  cast: state.movieReducer.cast,
-  storedCast: state.movieReducer.storedCast,
-  })
+  movieCast: state.movieReducer.cast,
+})
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCurrentMovie: (id, movies) => {
-      dispatch(getMovie(id, movies));
+    getMovie: (id) => {
+      dispatch(getMovie(id));
     },
-    getCast: (id, cast) => {
-      dispatch(getCast(id, cast));
+    getCast: (id) => {
+      dispatch(getCast(id));
     },
-    compare:(prop)=>{
-      dispatch(setCompareFunc(prop));
+    setComparedIdFunc: (id) => {
+      dispatch(setComparedIdFunc(id));
     }
   };
 };
 
 export const MovieContainer = connect(
-  mapStateToProps, 
+  mapStateToProps,
   mapDispatchToProps
 )(Movie);
