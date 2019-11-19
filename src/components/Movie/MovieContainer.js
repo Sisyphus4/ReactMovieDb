@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { getMovie } from '../../actions/getMovie';
 import { getCast } from '../../actions/getCast';
-import { setComparedIdFunc } from '../../actions/setComparedId';
+import { setComparedId } from '../../actions/setComparedId';
 import { Movie } from './Movie';
 
 const mapStateToProps = state => ({
@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(getCast(id));
     },
     setComparedIdFunc: (id) => {
-      dispatch(setComparedIdFunc(id));
+      dispatch(setComparedId(id));
     }
   };
 };

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
+import {MovieCastContainer} from '../MovieCast/MovieCastContainer'
 
 const imgsrc = 'https://image.tmdb.org/t/p/w300/';
 
@@ -21,10 +22,10 @@ export const Movie = props => {
   const id = props.match.params.id; //movie's id
   useEffect(() => {
     props.getMovie(id);
-    props.getCast(id);
   }, [1]);
 
-  return !!props.movie && !!props.movieCast
+
+  return !!props.movie 
     ? (
       <div className='theMovie'>
         <h1>{props.movie.original_title}</h1>
@@ -34,11 +35,7 @@ export const Movie = props => {
         <img src={imgsrc + props.movie.poster_path} />
         <p>Release date: {props.movie.release_date}</p>
         <button className='compareButton' type='button' onClick={handleCompareClick}>Add to Compare</button>
-        <div className='cast'>
-          <h4>Cast:</h4>
-          {props.movieCast.cast.map(actor =>
-            <p key={actor.name}>{actor.name}</p>)}
-        </div>
+       <MovieCastContainer/>
       </div>)
     : <div>There is no movie</div>
 };

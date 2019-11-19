@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {  Redirect } from "react-router-dom";
 
 
 export const ComparePage = props => {
@@ -50,7 +51,7 @@ export const ComparePage = props => {
   }
   else return (
     <div>
-      <p>Add 2 Movies!</p>
+      <Redirect to="/" />
     </div>
   )
 };

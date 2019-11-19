@@ -5,30 +5,6 @@ import {
   GET_EXISTED_MOVIE_SUCCESS,
 } from '../types/types.js';
 import axios from 'axios';
-import searchMovie from '../utilities/search';
-
-export const getMovie = (id) => {
-  return (dispatch, getState) => {
-    //Check if the movie is already downloaded
-    let neededMovie = searchMovie(id, getState().movieReducer.detailedMovies);
-    if (!!neededMovie) {
-      //If it is then just return the existed one
-      dispatch(getExistedMovieSuccess(neededMovie));
-    }
-    else {
-      //Otherwise download the new one
-      dispatch(getMoviesStarted());
-      axios
-        .get('https://api.themoviedb.org/3/movie/' + id + '?api_key=619815e4b2022dff08a72fdc13100b01')
-        .then(res => {
-          dispatch(getMovieSuccess(res.data));
-        })
-        .catch(err => {
-          dispatch(getMoviesFailure(err.message));
-        });
-    }
-  }
-}
 
 
 const getMovieSuccess = movie => ({
@@ -51,3 +27,26 @@ const getMoviesFailure = error => ({
     error
   }
 });
+
+export const getMovie = (id) => {
+  return (dispatch, getState) => {
+    //Check if the movie is already downloaded
+    let neededMovie = getState().movieReducer.detailedMovies.find((movie)=> movie.id==id);
+    if (!!neededMovie) {
+      //If it is then just return the existed one
+      dispatch(getExistedMovieSuccess(neededMovie));
+    }
+    else {
+      //Otherwise download the new one
+      dispatch(getMoviesStarted());
+      axios
+        .get('https://api.themoviedb.org/3/movie/' + id + '?api_key=619815e4b2022dff08a72fdc13100b01')
+        .then(res => {
+          dispatch(getMovieSuccess(res.data));
+        })
+        .catch(err => {
+          dispatch(getMoviesFailure(err.message));
+        });
+    }
+  }
+}
