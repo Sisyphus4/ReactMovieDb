@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { store } from 'react-notifications-component';
+import {  Redirect } from "react-router-dom";
 
-export const ShowMovies = props => {
+export const PopularMovies = props => {
   const imgsrc = 'https://image.tmdb.org/t/p/w185/';
   const handleCompareClick = (arg, e) => {
     e.stopPropagation(); //this is needed in order not to go to the movie page
-    props.setComparedIdFunc(arg.id);
+    props.setComparedId(arg.id);
     store.addNotification({
       title: 'Added',
       message: 'This movie is added to compare list',
@@ -16,9 +17,11 @@ export const ShowMovies = props => {
       }
     });
   }
+
   const handleClick = (movie) => {
     props.history.push('./movie/' + movie.id); //send us to movie page
-  }
+  };
+
   useEffect(() => {
     props.showMovies();
   }, [1]);
@@ -32,11 +35,11 @@ export const ShowMovies = props => {
       </div>
       : <div className='popularMovies'>
         {props.movies.map(movie =>
-          <div key={movie.id} className='oneOfMovies' onClick={handleClick.bind(null, movie)}>
+          <div key={movie.id} className='oneOfMovies' onClick={(e)=>handleClick(movie,e)}>
             <h1>{movie.original_title}</h1>
             <img src={imgsrc + movie.poster_path} />
             <p>Release date: {movie.release_date}</p>
-            <button className='compareButton' type='button' onClick={handleCompareClick.bind(null, movie)}>Add to Compare</button>
+            <button className='compareButton' type='button' onClick={(e)=>handleCompareClick(movie,e)}>Add to Compare</button>
           </div>)}
       </div>;
 };

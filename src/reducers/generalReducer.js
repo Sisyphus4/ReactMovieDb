@@ -13,7 +13,7 @@ const initialState = {
   error: null,
   comparedId: [],
 };
-function fllArray(state, action) {
+function addComparedId(state, action) {
   var comparedId = [...state.comparedId];
   comparedId.unshift(action.payload); //provides liquidity to array
   if (comparedId.length > 2)  //maximum 2 movies kept for comparison
@@ -35,7 +35,7 @@ export default function generalReducer(state = initialState, action) {
         movies: action.payload,
       };
     case SET_COMPARED_ID: 
-      return fllArray(state, action);
+      return addComparedId(state, action);
     case GET_MOVIES_FAILURE:
       return {
         ...state,

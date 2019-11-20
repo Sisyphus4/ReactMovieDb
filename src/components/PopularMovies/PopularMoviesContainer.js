@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { getMovies } from '../../actions/getMovies';
-import { ShowMovies } from './PopularMovies';
-import { setComparedIdFunc } from '../../actions/setComparedId';
+import { PopularMovies } from './PopularMovies';
+import { setComparedId } from '../../actions/setComparedId';
 
 
 const mapStateToProps = state => ({
@@ -14,8 +14,8 @@ const mapDispatchToProps = dispatch => {
     showMovies: () => {
       dispatch(getMovies());
     },
-    setComparedIdFunc: (id) => {
-      dispatch(setComparedIdFunc(id));
+    setComparedId: (id) => {
+      dispatch(setComparedId(id));
     },
   };
 };
@@ -23,4 +23,4 @@ const mapDispatchToProps = dispatch => {
 export const PopularMoviesContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(ShowMovies);
+)(PopularMovies);

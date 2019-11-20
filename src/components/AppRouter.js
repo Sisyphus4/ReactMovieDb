@@ -7,21 +7,21 @@ import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { useSelector } from 'react-redux'
 
 
-export const AppRouter = (props) => {
+export const AppRouter = () => {
   const count = useSelector(state => state.generalReducer.comparedId.length);
   return (
     <Router>
       <div>
         <nav className='navBar'>
-          <button className='navButton'>
-            <Link className="link" to="/">Home</Link>
-          </button>
-          <button className='navButton'>
-            <Link className='link' to='/Compare/'>Compare({count})</Link>
-          </button>
-          <button className='navButton'>
-            <Link className='link' to='/about/'>About</Link>
-          </button>
+          <Link className="link" to="/">
+            <button className='navButton' type='button'>Home</button>
+          </Link>
+          <Link className='link' to='/Compare/'>
+            <button className='navButton' type='button' disabled={!count}>Compare({count})</button>
+          </Link>
+          <Link className='link' to='/about/'>
+            <button className='navButton' type='button'>About</button>
+          </Link>
         </nav>
         <Switch>
           <Route path='/' exact component={PopularMoviesContainer} />

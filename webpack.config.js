@@ -4,12 +4,11 @@ module.exports = {
   entry: './src/index.js',
   devServer: {
        historyApiFallback: true,
-       contentBase: './public',
      },
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
-    publicPath: '/',
+    publicPath: '/public/',
   },
   module: {
          rules: [
