@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { getMovies } from '../../actions/getMovies';
+import { getMovies } from '../../redux/actions/getMovies';
 import { PopularMovies } from './PopularMovies';
-import { setComparedId } from '../../actions/setComparedId';
+import { setComparedId } from '../../redux/actions/setComparedId';
 
 
 const mapStateToProps = state => ({
