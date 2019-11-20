@@ -14,7 +14,11 @@ const mapDispatchToProps = dispatch => {
     showMovies: () => {
       dispatch(getMovies());
     },
+<<<<<<< HEAD
     setComparedIdFunc: (id) => {
+=======
+    setComparedId: (id) => {
+>>>>>>> 03365eb8b9f294c17a93955b99bb36bf22cbcf02
       dispatch(setComparedId(id));
     },
   };

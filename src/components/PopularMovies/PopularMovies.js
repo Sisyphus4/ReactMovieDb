@@ -6,7 +6,7 @@ export const PopularMovies = props => {
   const imgsrc = 'https://image.tmdb.org/t/p/w185/';
   const handleCompareClick = (arg, e) => {
     e.stopPropagation(); //this is needed in order not to go to the movie page
-    props.setComparedIdFunc(arg.id);
+    props.setComparedId(arg.id);
     store.addNotification({
       title: 'Added',
       message: 'This movie is added to compare list',
@@ -17,9 +17,11 @@ export const PopularMovies = props => {
       }
     });
   }
+
   const handleClick = (movie) => {
     props.history.push('./movie/' + movie.id); //send us to movie page
-  }
+  };
+
   useEffect(() => {
     props.showMovies();
   }, [1]);
