@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getCast } from '../../actions/getCast';
+import { getCast } from '../../redux/actions/getCast';
 import { MovieCast } from './MovieCast';
 
 const mapStateToProps = state => ({
