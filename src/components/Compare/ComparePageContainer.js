@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { clearFunc } from '../../actions/clear';
-import { getMovie } from '../../actions/getMovie';
+import { clearFunc } from '../../redux/actions/clear';
+import { getMovie } from '../../redux/actions/getMovie';
 import { ComparePage } from './ComparePage'
 
 const mapStateToProps = state => ({
