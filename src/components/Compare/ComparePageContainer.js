@@ -15,13 +15,6 @@ const mapDispatchToProps = (dispatch) => {
     getMovie: (id) => {
       dispatch(getMovie(id));
     },
-    // compare: (prop) => {
-    //   dispatch(setCompareFunc(prop));
-    // },
-    //left for back up
-    // addMovieToCompare: () => {
-    //   dispatch(addMovieToCompare());
-    // }
   };
 };
 export const ComparePageContainer = connect(

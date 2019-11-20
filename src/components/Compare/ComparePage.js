@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from "react-router-dom";
 
 
 export const ComparePage = props => {
@@ -16,7 +17,7 @@ export const ComparePage = props => {
       props.getMovie(id);
     }
   }, [1]);
-
+  
   //Getting compared movies from detailed movies
   for (let movie of props.detailedMovies) {
     if (movie.id == props.comparedId[0] || movie.id == props.comparedId[1]) {
@@ -25,8 +26,7 @@ export const ComparePage = props => {
       }
     }
   }
-
-  if (!!moviesToCompare && moviesToCompare.length > 0) {
+  if (props.comparedId.length > 0) {
     return (
       <div className='comparedMovies'>
         <div>
@@ -49,8 +49,6 @@ export const ComparePage = props => {
     )
   }
   else return (
-    <div>
-      <p>Add 2 Movies!</p>
-    </div>
+    <Redirect to="/" />
   )
 };
