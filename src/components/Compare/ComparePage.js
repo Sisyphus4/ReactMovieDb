@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from 'react';
-<<<<<<< HEAD
-import {  Redirect } from "react-router-dom";
-=======
 import { Redirect } from "react-router-dom";
->>>>>>> 03365eb8b9f294c17a93955b99bb36bf22cbcf02
 
 
 export const ComparePage = props => {
@@ -53,12 +49,6 @@ export const ComparePage = props => {
     )
   }
   else return (
-<<<<<<< HEAD
-    <div>
-      <Redirect to="/" />
-    </div>
-=======
     <Redirect to="/" />
->>>>>>> 03365eb8b9f294c17a93955b99bb36bf22cbcf02
   )
 };

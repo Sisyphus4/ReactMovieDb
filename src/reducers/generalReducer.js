@@ -2,7 +2,6 @@ import {
   GET_MOVIES_STARTED,
   GET_MOVIES_SUCCESS,
   GET_MOVIES_FAILURE,
-  SET_COMPARE,
   SET_COMPARED_ID,
   CLEAR,
 } from '../types/types.js';
