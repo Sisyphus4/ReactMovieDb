@@ -4,7 +4,9 @@ import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 import { MovieCastContainer } from '../MovieCast/MovieCastContainer'
 
-const imgsrc = 'https://image.tmdb.org/t/p/w300/';
+import {
+  imgsrc300,
+} from '../../movieDbAPI/moiveDb.js';
 
 export const Movie = props => {
   const handleCompareClick = () => {
@@ -32,7 +34,7 @@ export const Movie = props => {
         <p>Genres: {props.movie.genres.map(genre => {
           return <span key={genre.id}>{genre.name + ','} </span>
         })}</p>
-        <img src={imgsrc + props.movie.poster_path} />
+        <img src={imgsrc300 + props.movie.poster_path} />
         <p>Release date: {props.movie.release_date}</p>
         <button className='compareButton' type='button' onClick={handleCompareClick}>Add to Compare</button>
         <MovieCastContainer />
