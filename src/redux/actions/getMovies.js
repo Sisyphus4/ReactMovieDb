@@ -5,6 +5,9 @@ import {
 } from '../types/types.js';
 import axios from 'axios';
 
+import {
+  getPopularMoviesRequest,
+} from '../movieDbAPI/moiveDb.js';
 
 
 const getMoviesSuccess = movies => ({
@@ -27,7 +30,7 @@ export const getMovies = () => {
   return dispatch => {
     dispatch(getMoviesStarted()); //todo:make getFilmsStarted
     axios
-      .get('https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=619815e4b2022dff08a72fdc13100b01')
+      .get(getPopularMoviesRequest)
       .then(res => {
         dispatch(getMoviesSuccess(res.data.results));
       })

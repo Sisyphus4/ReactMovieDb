@@ -5,7 +5,11 @@ import {
   GET_MOVIES_FAILURE,
 } from '../types/types.js';
 import axios from 'axios';
-
+import {
+  APIkey,
+  getCastRequest,
+  getMovieRequest,
+} from '../movieDbAPI/moiveDb.js';
 
 const getCastSuccess = (cast) => ({
   type: GET_CAST_SUCCESS,
@@ -39,7 +43,7 @@ export const getCast = (id) => {
       //Otherwise download the new one
       dispatch(getMoviesStarted());
       axios
-        .get('https://api.themoviedb.org/3/movie/' + id + '/credits?api_key=619815e4b2022dff08a72fdc13100b01')
+        .get(getMovieRequest + id + getCastRequest + APIkey)
         .then(res => {
           dispatch(getCastSuccess(res.data));
         })

@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react';
 import { store } from 'react-notifications-component';
+import {
+  imgsrc185,
+} from '../../movieDbAPI/moiveDb.js';
 
 export const PopularMovies = props => {
-  const imgsrc = 'https://image.tmdb.org/t/p/w185/';
   const handleCompareClick = (arg, e) => {
     e.stopPropagation(); //this is needed in order not to go to the movie page
     props.setComparedId(arg.id);
@@ -36,7 +38,7 @@ export const PopularMovies = props => {
         {props.movies.map(movie =>
           <div key={movie.id} className='oneOfMovies' onClick={(e)=>handleClick(movie,e)}>
             <h1>{movie.original_title}</h1>
-            <img src={imgsrc + movie.poster_path} />
+            <img src={imgsrc185 + movie.poster_path} />
             <p>Release date: {movie.release_date}</p>
             <button className='compareButton' type='button' onClick={(e)=>handleCompareClick(movie,e)}>Add to Compare</button>
           </div>)}
