@@ -31,7 +31,7 @@ export const getCast = (id) => {
   return (dispatch, getState) => {
     //Check if the cast is already downloaded
     let neededCast = getState().movieReducer.storedCast.find((cast) => cast.id === id);
-    if (!!neededCast) {
+    if (neededCast) {
       //If it is then just return the existed one
       dispatch(getExistedCastSuccess(neededCast))
     }

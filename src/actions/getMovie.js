@@ -32,7 +32,7 @@ export const getMovie = (id) => {
   return (dispatch, getState) => {
     //Check if the movie is already downloaded
     let neededMovie = getState().movieReducer.detailedMovies.find((movie)=> movie.id==id);
-    if (!!neededMovie) {
+    if (neededMovie) {
       //If it is then just return the existed one
       dispatch(getExistedMovieSuccess(neededMovie));
     }
