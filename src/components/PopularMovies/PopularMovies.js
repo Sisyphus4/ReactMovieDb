@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { store } from 'react-notifications-component';
-import {  Redirect } from "react-router-dom";
 
 export const PopularMovies = props => {
   const imgsrc = 'https://image.tmdb.org/t/p/w185/';
