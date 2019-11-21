@@ -19,7 +19,7 @@ export const PopularMovies = props => {
     });
   }
 
-  const handleClick = (movie) => {
+  const handleMovieClick = (movie) => {
     props.history.push('./movie/' + movie.id); //send us to movie page
   };
 
@@ -36,7 +36,7 @@ export const PopularMovies = props => {
       </div>
       : <div className='popularMovies'>
         {props.movies.map(movie =>
-          <div key={movie.id} className='oneOfMovies' onClick={(e)=>handleClick(movie,e)}>
+          <div key={movie.id} className='oneOfMovies' onClick={(e)=>handleMovieClick(movie,e)}>
             <h1>{movie.original_title}</h1>
             <img src={imgsrc185 + movie.poster_path} />
             <p>Release date: {movie.release_date}</p>

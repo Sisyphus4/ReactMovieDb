@@ -37,7 +37,7 @@ export const ComparePage = props => {
           <button className='compareButton' onClick={handleClearClick}>Clear</button>
         </div>
         {moviesToCompare.map(movie =>
-          <MovieToCompare movie={movie}/>)}
+          <MovieToCompare key={movie.id} movie={movie}/>)}
       </div>
     )
   }
