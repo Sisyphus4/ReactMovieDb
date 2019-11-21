@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { clearComparedMovies } from '../../redux/actions/clearComparedMovies';
+import { removeComparedMovie } from '../../redux/actions/removeComparedMovie';
 import { getMovie } from '../../redux/actions/getMovie';
 import { ComparePage } from './ComparePage'
 
@@ -11,6 +12,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     clearComparedMovies: () => {
       dispatch(clearComparedMovies());
+    },
+    removeComparedMovie: (id) => {
+      dispatch(removeComparedMovie(id));
     },
     getMovie: (id) => {
       dispatch(getMovie(id));
