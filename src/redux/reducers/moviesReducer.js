@@ -25,7 +25,6 @@ function addComparedId(state, id) {
 function removeId(state, id){
   let comparedId = [...state.comparedId];
   comparedId.splice( comparedId.indexOf(id), 1 );
-  console.log(comparedId);
   return {...state, comparedId}
 }
 

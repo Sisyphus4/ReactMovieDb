@@ -38,7 +38,6 @@ export const ComparePage = props => {
       }
     }
   }
-  console.log(moviesToCompare);
 
   if (props.comparedId.length > 0) {
     return (
