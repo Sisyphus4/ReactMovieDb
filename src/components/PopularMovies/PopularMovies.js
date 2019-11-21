@@ -1,13 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { store } from 'react-notifications-component';
 import {
   imgsrc185,
 } from '../../movieDbAPI/moiveDb.js';
 
-export const PopularMovies = props => {
-  const handleCompareClick = (arg, e) => {
+//Here I try to use class component instead of function in order to get familiar with it
+
+class PopularMovies extends React.Component {
+
+  handleClick(movie) {
+    this.props.history.push('./movie/' + movie.id); //send us to movie page
+  }
+
+  handleCompareClick(arg, e) {
     e.stopPropagation(); //this is needed in order not to go to the movie page
-    props.setComparedId(arg.id);
+    this.props.setComparedId(arg.id);
     store.addNotification({
       title: 'Added',
       message: 'This movie is added to compare list',
@@ -19,28 +26,25 @@ export const PopularMovies = props => {
     });
   }
 
-  const handleClick = (movie) => {
-    props.history.push('./movie/' + movie.id); //send us to movie page
-  };
+  componentDidMount(){
+    this.props.showMovies();
+  }
 
-  useEffect(() => {
-    props.showMovies();
-  }, [1]);
-
-  if (props.loading)
-    return <div>Loading</div>
-  else
-    return !props.movies || props.movies.length === 0
+  render() {
+    return !this.props.movies || this.props.movies.length === 0
       ? <div>
         There are no movies.
-      </div>
+    </div>
       : <div className='popularMovies'>
-        {props.movies.map(movie =>
-          <div key={movie.id} className='oneOfMovies' onClick={(e)=>handleClick(movie,e)}>
+        {this.props.movies.map(movie =>
+          <div key={movie.id} className='oneOfMovies' onClick={(e) => this.handleClick(movie, e)}>
             <h1>{movie.original_title}</h1>
             <img src={imgsrc185 + movie.poster_path} />
             <p>Release date: {movie.release_date}</p>
-            <button className='compareButton' type='button' onClick={(e)=>handleCompareClick(movie,e)}>Add to Compare</button>
+            <button className='compareButton' type='button' onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
           </div>)}
       </div>;
-};
+  }
+}
+
+export default PopularMovies;
