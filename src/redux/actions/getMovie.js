@@ -8,7 +8,7 @@ import axios from 'axios';
 import {
   APIkey,
   getMovieRequest,
-} from '../movieDbAPI/moiveDb.js';
+} from '../../movieDbAPI/moiveDb.js';
 
 const getMovieSuccess = movie => ({
   type: GET_MOVIE_SUCCESS,

@@ -9,7 +9,7 @@ import {
   APIkey,
   getCastRequest,
   getMovieRequest,
-} from '../movieDbAPI/moiveDb.js';
+} from '../../movieDbAPI/moiveDb.js';
 
 const getCastSuccess = (cast) => ({
   type: GET_CAST_SUCCESS,
