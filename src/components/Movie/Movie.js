@@ -3,10 +3,7 @@ import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 import { MovieCastContainer } from '../MovieCast/MovieCastContainer'
-
-import {
-  imgsrc300,
-} from '../../movieDbAPI/moiveDb.js';
+import { MovieDescription } from './MovieDescription'
 
 export const Movie = props => {
   const handleCompareClick = () => {
@@ -30,12 +27,7 @@ export const Movie = props => {
   return props.movie
     ? (
       <div className='theMovie'>
-        <h1>{props.movie.original_title}</h1>
-        <p>Genres: {props.movie.genres.map(genre => {
-          return <span key={genre.id}>{genre.name + ','} </span>
-        })}</p>
-        <img src={imgsrc300 + props.movie.poster_path} />
-        <p>Release date: {props.movie.release_date}</p>
+        <MovieDescription movie={props.movie}/>
         <button className='compareButton' type='button' onClick={handleCompareClick}>Add to Compare</button>
         <MovieCastContainer />
       </div>)

@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from "react-router-dom";
-
-import {
-  imgsrc185,
-} from '../../movieDbAPI/moiveDb.js';
+import { MovieToCompare } from './MovieToCompare';
 
 export const ComparePage = props => {
   const [moviesToCompare, setMovie] = useState([]);
@@ -40,13 +37,7 @@ export const ComparePage = props => {
           <button className='compareButton' onClick={handleClearClick}>Clear</button>
         </div>
         {moviesToCompare.map(movie =>
-          <div key={movie.id} className='oneOfComparedMovies'>
-            <h1>{movie.original_title}</h1>
-            <img src={imgsrc185 + movie.poster_path} />
-            <p>{movie.release_date}</p>
-            <p>{movie.budget.toLocaleString()}</p>
-            <p>{movie.popularity}</p>
-          </div>)}
+          <MovieToCompare movie={movie}/>)}
       </div>
     )
   }
