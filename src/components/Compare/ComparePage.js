@@ -9,7 +9,7 @@ export const ComparePage = props => {
   const [moviesToCompare, setMovie] = useState([]);
 
   const handleClearClick = () => {
-    props.clear(); //Empty comparedId array
+    props.clearComparedMovies(); //Empty comparedId array
     setMovie([]); //Empty moviesToCompare
   }
 

@@ -3,7 +3,7 @@ import {
   GET_MOVIES_SUCCESS,
   GET_MOVIES_FAILURE,
   SET_COMPARED_ID,
-  CLEAR,
+  CLEAR_COMPARED_MOVIES,
 } from '../types/types.js';
 
 const initialState = {
@@ -41,7 +41,7 @@ export default function generalReducer(state = initialState, action) {
         loading: false,
         error: action.payload.error
       };
-    case CLEAR:
+      case CLEAR_COMPARED_MOVIES:
       return {
         ...state,
         comparedId: [],

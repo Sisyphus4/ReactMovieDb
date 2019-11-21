@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Link } from "react-router-dom";
 
 export const NavBar = () => {
-    const count = useSelector(state => state.generalReducer.comparedId.length);
+    const count = useSelector(state => state.moviesReducer.comparedId.length);
     return (
         <nav className='navBar'>
             <Link className="link" to="/">

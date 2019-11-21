@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
-import { clearFunc } from '../../redux/actions/clear';
+import { clearComparedMovies } from '../../redux/actions/clearComparedMovies';
 import { getMovie } from '../../redux/actions/getMovie';
 import { ComparePage } from './ComparePage'
 
 const mapStateToProps = state => ({
-  comparedId: state.generalReducer.comparedId,
+  comparedId: state.moviesReducer.comparedId,
   detailedMovies: state.movieReducer.detailedMovies,
 });
 const mapDispatchToProps = (dispatch) => {
   return {
-    clear: () => {
-      dispatch(clearFunc());
+    clearComparedMovies: () => {
+      dispatch(clearComparedMovies());
     },
     getMovie: (id) => {
       dispatch(getMovie(id));

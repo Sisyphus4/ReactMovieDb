@@ -5,7 +5,7 @@ import { setComparedId } from '../../redux/actions/setComparedId';
 
 
 const mapStateToProps = state => ({
-  movies: state.generalReducer.movies,
+  movies: state.moviesReducer.movies,
   movie: state.movieReducer.movie,
   detailedMovies: state.movieReducer.detailedMovies,
 });
