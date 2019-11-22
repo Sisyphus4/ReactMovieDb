@@ -12,14 +12,16 @@ export const ComparePage = props => {
     history.push('.././movie/' + movie.id); //send us to movie page
   };
 
+  //Remove one specific movie
   const handleDeleteClick = (id,e) => {
     e.stopPropagation();
     props.removeComparedMovie(id);
     setMovie([]);
   };
 
+  //Empty comparedId array
   const handleClearClick = () => {
-    props.clearComparedMovies(); //Empty comparedId array
+    props.clearComparedMovies(); 
     setMovie([]); //Empty moviesToCompare
   }
 
