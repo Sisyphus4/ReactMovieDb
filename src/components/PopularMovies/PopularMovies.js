@@ -8,7 +8,7 @@ import {
 
 class PopularMovies extends React.Component {
 
-  handleClick(movie) {
+  handleMovieClick(movie) {
     this.props.history.push('./movie/' + movie.id); //send us to movie page
   }
 
@@ -37,7 +37,7 @@ class PopularMovies extends React.Component {
     </div>
       : <div className='popularMovies'>
         {this.props.movies.map(movie =>
-          <div key={movie.id} className='oneOfMovies' onClick={(e) => this.handleClick(movie, e)}>
+          <div key={movie.id} className='oneOfMovies' onClick={(e) => this.handleMovieClick(movie, e)}>
             <h1>{movie.original_title}</h1>
             <img src={imgsrc185 + movie.poster_path} />
             <p>Release date: {movie.release_date}</p>
