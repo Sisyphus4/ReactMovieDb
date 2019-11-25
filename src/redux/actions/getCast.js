@@ -31,10 +31,13 @@ const getMoviesFailure = error => ({
   }
 });
 
-export const getCast = (id) => {
+export const getCast = () => {
   return (dispatch, getState) => {
+    let id = getState().movieReducer.movie.id;
+    
     //Check if the cast is already downloaded
     let neededCast = getState().movieReducer.storedCast.find((cast) => cast.id === id);
+    
     if (neededCast) {
       //If it is then just return the existed one
       dispatch(getExistedCastSuccess(neededCast))

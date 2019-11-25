@@ -4,7 +4,7 @@ import 'animate.css';
 
 export const MovieCast = props => {
     useEffect(() => {
-        props.getCast(props.id);
+        props.getCast();
     }, [1]);
 
 
