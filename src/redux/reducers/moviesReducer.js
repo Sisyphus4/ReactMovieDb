@@ -4,11 +4,13 @@ import {
   GET_MOVIES_FAILURE,
   SET_COMPARED_ID,
   CLEAR_COMPARED_MOVIES,
+  SEARCH_MOVIE_SUCCESS,
 } from '../types/types.js';
 
 const initialState = {
   loading: false,
   movies: [],
+  searchResults: [],
   error: null,
   comparedId: [],
 };
@@ -33,7 +35,14 @@ export default function generalReducer(state = initialState, action) {
         error: null,
         movies: action.payload,
       };
-    case SET_COMPARED_ID: 
+    case SEARCH_MOVIE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        searchResults: action.payload,
+      };
+    case SET_COMPARED_ID:
       return addComparedId(state, action);
     case GET_MOVIES_FAILURE:
       return {
@@ -41,7 +50,7 @@ export default function generalReducer(state = initialState, action) {
         loading: false,
         error: action.payload.error
       };
-      case CLEAR_COMPARED_MOVIES:
+    case CLEAR_COMPARED_MOVIES:
       return {
         ...state,
         comparedId: [],

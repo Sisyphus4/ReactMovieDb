@@ -4,3 +4,5 @@ export const getMovieRequest = 'https://api.themoviedb.org/3/movie/';
 export const getCastRequest = '/credits';
 export const imgsrc185 = 'https://image.tmdb.org/t/p/w185/';
 export const imgsrc300 = 'https://image.tmdb.org/t/p/w300/';
+export const searchMovieRequest = 'https://api.themoviedb.org/3/search/movie/';
+export const query='&query=';
