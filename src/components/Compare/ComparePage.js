@@ -1,15 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect } from "react-router-dom";
-
-import {
-  imgsrc185,
-} from '../../movieDbAPI/moiveDb.js';
+import { MovieToCompare } from './MovieToCompare';
+import { useHistory } from "react-router-dom";
 
 export const ComparePage = props => {
   const [moviesToCompare, setMovie] = useState([]);
 
+  let history = useHistory();
+
+  const handleMovieClick = (movie) => {
+    history.push('.././movie/' + movie.id); //send us to movie page
+  };
+
+  //Remove one specific movie
+  const handleDeleteClick = (id,e) => {
+    e.stopPropagation();
+    props.removeComparedMovie(id);
+    setMovie([]);
+  };
+
+  //Empty comparedId array
   const handleClearClick = () => {
-    props.clearComparedMovies(); //Empty comparedId array
+    props.clearComparedMovies(); 
     setMovie([]); //Empty moviesToCompare
   }
 
@@ -19,7 +31,7 @@ export const ComparePage = props => {
       props.getMovie(id);
     }
   }, [1]);
-  
+
   //Getting compared movies from detailed movies
   for (let movie of props.detailedMovies) {
     if (movie.id == props.comparedId[0] || movie.id == props.comparedId[1]) {
@@ -28,6 +40,7 @@ export const ComparePage = props => {
       }
     }
   }
+
   if (props.comparedId.length > 0) {
     return (
       <div className='comparedMovies'>
@@ -40,12 +53,9 @@ export const ComparePage = props => {
           <button className='compareButton' onClick={handleClearClick}>Clear</button>
         </div>
         {moviesToCompare.map(movie =>
-          <div key={movie.id} className='oneOfComparedMovies'>
-            <h1>{movie.original_title}</h1>
-            <img src={imgsrc185 + movie.poster_path} />
-            <p>{movie.release_date}</p>
-            <p>{movie.budget.toLocaleString()}</p>
-            <p>{movie.popularity}</p>
+          <div key={movie.id} className='oneOfComparedMovies' onClick={() => handleMovieClick(movie)}>
+            <MovieToCompare movie={movie} />
+            <button className='compareButton' type='button' onClick={(e) => handleDeleteClick(movie.id, e)}>Remove</button>
           </div>)}
       </div>
     )
