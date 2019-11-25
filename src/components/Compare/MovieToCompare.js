@@ -2,7 +2,7 @@ import React from 'react'
 
 import {
     imgsrc185,
-} from '../../movieDbAPI/moiveDb.js';
+} from '../../movieDbAPI/movieDb.js';
 
 export const MovieToCompare = (props) => {
 

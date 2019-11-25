@@ -2,7 +2,7 @@ import React from 'react'
 
 import {
     imgsrc300,
-} from '../../movieDbAPI/moiveDb.js';
+} from '../../movieDbAPI/movieDb';
 
 export const MovieDescription = (props) => {
     return (

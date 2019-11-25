@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setComparedId } from '../../redux/actions/setComparedId';
 import {
     imgsrc185,
-} from '../../movieDbAPI/moiveDb.js';
+} from '../../movieDbAPI/movieDb';
 import { Redirect } from "react-router-dom";
 
 

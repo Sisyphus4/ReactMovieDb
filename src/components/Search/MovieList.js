@@ -11,7 +11,6 @@ export const MovieList = (props) => {
     const history = useHistory();
 
     const handleMovieClick = (movie) => {
-        console.log('asd');
         history.push('/movie/' + movie.id); //send us to movie page
         location.reload();
     };

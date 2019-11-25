@@ -2,7 +2,7 @@ import React from 'react';
 import { store } from 'react-notifications-component';
 import {
   imgsrc185,
-} from '../../movieDbAPI/moiveDb.js';
+} from '../../movieDbAPI/movieDb.js';
 
 //Here I try to use class component instead of function in order to get familiar with it
 

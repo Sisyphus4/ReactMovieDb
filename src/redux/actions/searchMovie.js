@@ -9,7 +9,7 @@ import {
     searchMovieRequest,
     APIkey,
     query,
-  } from '../../movieDbAPI/moiveDb.js';
+  } from '../../movieDbAPI/movieDb';
   
   
   const searchMovieSuccess = movies => ({

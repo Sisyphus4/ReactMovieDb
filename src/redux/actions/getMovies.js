@@ -7,7 +7,7 @@ import axios from 'axios';
 
 import {
   getPopularMoviesRequest,
-} from '../../movieDbAPI/moiveDb.js';
+} from '../../movieDbAPI/movieDb';
 
 
 const getMoviesSuccess = movies => ({

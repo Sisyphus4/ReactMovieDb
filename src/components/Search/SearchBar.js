@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { searchMovie } from '../../redux/actions/searchMovie';
 import { useHistory } from 'react-router-dom';
-import { MovieList } from './MovieList'
+import { MovieList } from './MovieList';
+import { debounce } from 'underscore';
 
 export const SearchBar = () => {
     const dispatch = useDispatch();
@@ -14,15 +15,15 @@ export const SearchBar = () => {
         dispatch(searchMovie(args));
         history.push('/searchResults');
     }
-
+    const debouncedDispatch = debounce((value)=>dispatch(searchMovie(value)), 200);
     //We dinamically display movies that user is searching
     const handleTyping = (event) => {
-        dispatch(searchMovie(event.target.value));
+        debouncedDispatch(event.target.value);
     }
 
     //If user clicks outside input, we make suggested list invisible
-    window.onclick = function(event) {
-        if(event.target.nodeName!='UL'&& event.target.nodeName!='INPUT'){
+    window.onclick = function (event) {
+        if (event.target.nodeName != 'UL' && event.target.nodeName != 'INPUT') {
             setActive(false);
         }
     }
@@ -37,7 +38,8 @@ export const SearchBar = () => {
             id="searchBar"
             type='text'
             placeholder='Search'
-            onChange={(e) => handleTyping(e)}
+            //onChange={(e) => debounce(handleTyping(e), 200)}
+            onChange={handleTyping}
             onFocus={handleFocus} />
         <MovieList active={active} />
     </form>

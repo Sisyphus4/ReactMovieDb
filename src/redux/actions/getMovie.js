@@ -3,12 +3,12 @@ import {
   GET_MOVIE_SUCCESS,
   GET_MOVIES_FAILURE,
   GET_EXISTED_MOVIE_SUCCESS,
-} from '../types/types.js';
+} from '../types/types';
 import axios from 'axios';
 import {
   APIkey,
   getMovieRequest,
-} from '../../movieDbAPI/moiveDb.js';
+} from '../../movieDbAPI/movieDb';
 
 const getMovieSuccess = movie => ({
   type: GET_MOVIE_SUCCESS,
