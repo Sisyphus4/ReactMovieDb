@@ -4,12 +4,11 @@ import { MovieCast } from './MovieCast';
 
 const mapStateToProps = state => ({
     movieCast: state.movieReducer.cast,
-    id: state.movieReducer.movie.id,
 })
 const mapDispatchToProps = (dispatch) => {
     return {
-        getCast: (id) => {
-            dispatch(getCast(id));
+        getCast: () => {
+            dispatch(getCast());
         },
     };
 };
