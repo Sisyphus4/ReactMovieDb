@@ -4,7 +4,8 @@ import { PopularMoviesContainer } from '../PopularMovies/PopularMoviesContainer'
 import { MovieContainer } from '../Movie/MovieContainer';
 import { ComparePageContainer } from '../Compare/ComparePageContainer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { NavBar } from './NavBar'
+import { NavBar } from './NavBar';
+import { NoMatch } from './NoMatch'
 
 export const AppRouter = () => {
   return (
@@ -16,6 +17,7 @@ export const AppRouter = () => {
           <Route path='/about/' component={About} />
           <Route path='/compare/' component={ComparePageContainer} />
           <Route path='/movie/:id' component={MovieContainer} />
+          <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>
