@@ -29,10 +29,12 @@ const getMoviesFailure = error => ({
 });
 
 export const searchMovie = (searchedMovie) => {
+  const request = searchMovieRequest + APIkey + query + searchedMovie;
+  
   return dispatch => {
     dispatch(getMoviesStarted());
     axios
-      .get(searchMovieRequest + APIkey + query + searchedMovie)
+      .get(request)
       .then(res => {
         dispatch(searchMovieSuccess(res.data.results));
       })

@@ -24,19 +24,22 @@ export const SearchMoviePage = (props) => {
             }
         });
     }
+
     const handleClick = (movie) => {
         props.history.push('./movie/' + movie.id); // send us to movie page
     };
 
     if (searchResults.length > 0) {
         return <div className='popularMovies'>
-            {searchResults.map(movie =>
-                <div key={movie.id} className='oneOfMovies' onClick={(e) => handleClick(movie, e)}>
+            {searchResults.map(movie => {
+                const imgsrc = imgsrc185 + movie.poster_path;
+                return <div key={movie.id} className='oneOfMovies' onClick={(e) => handleClick(movie, e)}>
                     <h1>{movie.original_title}</h1>
-                    <img src={imgsrc185 + movie.poster_path} />
+                    <img src={imgsrc} />
                     <p>Release date: {movie.release_date}</p>
                     <button className='compareButton' type='button' onClick={(e) => handleCompareClick(movie, e)}>Add to Compare</button>
-                </div>)}
+                </div>
+            })}
         </div>
     }
     else {

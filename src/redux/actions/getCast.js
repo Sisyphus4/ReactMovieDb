@@ -33,6 +33,7 @@ const getMoviesFailure = error => ({
 
 export const getCast = () => {
   return (dispatch, getState) => {
+    const request = getMovieRequest + id + getCastRequest + APIkey;
     let id = getState().movieReducer.movie.id;
     
     // Check if the cast is already downloaded
@@ -46,7 +47,7 @@ export const getCast = () => {
       // Otherwise download the new one
       dispatch(getMoviesStarted());
       axios
-        .get(getMovieRequest + id + getCastRequest + APIkey)
+        .get(request)
         .then(res => {
           dispatch(getCastSuccess(res.data));
         })
