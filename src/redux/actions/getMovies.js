@@ -28,7 +28,7 @@ const getMoviesFailure = error => ({
 
 export const getMovies = () => {
   return dispatch => {
-    dispatch(getMoviesStarted()); //todo:make getFilmsStarted
+    dispatch(getMoviesStarted());
     axios
       .get(getPopularMoviesRequest)
       .then(res => {

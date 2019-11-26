@@ -6,7 +6,7 @@ import {
 
 export const MovieDescription = (props) => {
     return (
-        //Here I use fragments in order not to create too much divs
+        // Here I use fragments in order not to create too much divs
         <>
             <h1>{props.movie.original_title}</h1>
             <p>Genres: {props.movie.genres.map(genre => {

@@ -9,11 +9,11 @@ import {
 class PopularMovies extends React.Component {
 
   handleMovieClick(movie) {
-    this.props.history.push('./movie/' + movie.id); //send us to movie page
+    this.props.history.push('./movie/' + movie.id); // send us to movie page
   }
 
   handleCompareClick(arg, e) {
-    e.stopPropagation(); //this is needed in order not to go to the movie page
+    e.stopPropagation(); // this is needed in order not to go to the movie page
     this.props.setComparedId(arg.id);
     store.addNotification({
       title: 'Added',

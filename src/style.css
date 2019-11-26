@@ -101,7 +101,6 @@ img{
 .MovieList{
   position: absolute;
   background-color: white;
-  visibility: visible; 
 }
 .MovieList ul{
   list-style-type: none;

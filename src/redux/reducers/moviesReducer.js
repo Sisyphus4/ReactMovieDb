@@ -6,6 +6,8 @@ import {
   CLEAR_COMPARED_MOVIES,
   SEARCH_MOVIE_SUCCESS,
   REMOVE_COMPARED_MOVIE,
+  SET_ACTIVE_TRUE,
+  SET_ACTIVE_FALSE,
 } from '../types/types.js';
 
 const initialState = {
@@ -14,20 +16,21 @@ const initialState = {
   searchResults: [],
   error: null,
   comparedId: [],
+  inputActive: false,
 };
 
 function addComparedId(state, id) {
   var comparedId = [...state.comparedId];
-  comparedId.unshift(id); //provides liquidity to array
-  if (comparedId.length > 2)  //maximum 2 movies kept for comparison
+  comparedId.unshift(id); // provides liquidity to array
+  if (comparedId.length > 2)  // maximum 2 movies kept for comparison
     comparedId.pop();
   return { ...state, comparedId }
 }
 
-function removeId(state, id){
+function removeId(state, id) {
   let comparedId = [...state.comparedId];
-  comparedId.splice( comparedId.indexOf(id), 1 );
-  return {...state, comparedId}
+  comparedId.splice(comparedId.indexOf(id), 1);
+  return { ...state, comparedId }
 }
 
 export default function generalReducer(state = initialState, action) {
@@ -51,7 +54,7 @@ export default function generalReducer(state = initialState, action) {
         error: null,
         searchResults: action.payload,
       };
-    case SET_COMPARED_ID: 
+    case SET_COMPARED_ID:
       return addComparedId(state, action.payload);
     case GET_MOVIES_FAILURE:
       return {
@@ -64,8 +67,18 @@ export default function generalReducer(state = initialState, action) {
         ...state,
         comparedId: [],
       };
-      case REMOVE_COMPARED_MOVIE:
-        return removeId(state, action.payload);
+    case REMOVE_COMPARED_MOVIE:
+      return removeId(state, action.payload);
+    case SET_ACTIVE_TRUE:
+      return {
+        ...state,
+        inputActive: true,
+      };
+    case SET_ACTIVE_FALSE:
+      return {
+        ...state,
+        inputActive: false,
+      };
     default:
       return state;
   }

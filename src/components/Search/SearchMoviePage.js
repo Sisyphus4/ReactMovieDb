@@ -6,14 +6,13 @@ import { setComparedId } from '../../redux/actions/setComparedId';
 import {
     imgsrc185,
 } from '../../movieDbAPI/movieDb';
-import { Redirect } from "react-router-dom";
 
 
 export const SearchMoviePage = (props) => {
     const searchResults = useSelector(state => state.moviesReducer.searchResults);
     const dispatch = useDispatch();
     const handleCompareClick = (movie, e) => {
-        e.stopPropagation(); //this is needed in order not to go to the movie page
+        e.stopPropagation(); // this is needed in order not to go to the movie page
         dispatch(setComparedId(movie.id));
         store.addNotification({
             title: 'Added',
@@ -26,7 +25,7 @@ export const SearchMoviePage = (props) => {
         });
     }
     const handleClick = (movie) => {
-        props.history.push('./movie/' + movie.id); //send us to movie page
+        props.history.push('./movie/' + movie.id); // send us to movie page
     };
 
     if (searchResults.length > 0) {
@@ -41,6 +40,8 @@ export const SearchMoviePage = (props) => {
         </div>
     }
     else {
-        return <Redirect to="/" />
+        return <div>
+            <p>There is no search results</p>
+        </div>
     }
 }
