@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
-import { MovieCastContainer } from '../MovieCast/MovieCastContainer'
-import { MovieDescription } from './MovieDescription'
+import { MovieCastContainer } from '../MovieCast/MovieCastContainer';
+import { MovieDescription } from './MovieDescription';
+import { Spinner } from '../Spinner/Spinner'
 
 export const Movie = props => {
   const handleCompareClick = () => {
@@ -23,13 +24,14 @@ export const Movie = props => {
     props.getMovie(id);
   }, [1]);
 
-
-  return props.movie
-    ? (
-      <div className='theMovie'>
-        <MovieDescription movie={props.movie}/>
-        <button className='compareButton' type='button' onClick={handleCompareClick}>Add to Compare</button>
-        <MovieCastContainer />
-      </div>)
-    : <div>There is no movie</div>
+  return props.loading
+    ? <Spinner />
+    : props.movie
+      ? (
+        <div className='theMovie'>
+          <MovieDescription movie={props.movie} />
+          <button className='compareButton' type='button' onClick={handleCompareClick}>Add to Compare</button>
+          <MovieCastContainer />
+        </div>)
+      : <div>{props.error}</div>
 };

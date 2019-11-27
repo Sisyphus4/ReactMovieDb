@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getMovies } from '../../redux/actions/getMovies';
-import  PopularMovies  from './PopularMovies';
+import PopularMovies from './PopularMovies';
 import { setComparedId } from '../../redux/actions/setComparedId';
 
 
@@ -8,6 +8,8 @@ const mapStateToProps = state => ({
   movies: state.moviesReducer.movies,
   movie: state.movieReducer.movie,
   detailedMovies: state.movieReducer.detailedMovies,
+  loading: state.moviesReducer.loading,
+  error: state.moviesReducer.error,
 });
 const mapDispatchToProps = dispatch => {
   return {

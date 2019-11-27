@@ -10,7 +10,7 @@ import {
 const initialState = {
   loading: false,
   movies: [],
-  error: null,
+  error: '',
   comparedId: [],
 };
 
@@ -39,7 +39,7 @@ export default function generalReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: null,
+        error: '',
         movies: action.payload,
       };
     case SET_COMPARED_ID: 

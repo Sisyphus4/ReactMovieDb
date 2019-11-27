@@ -1,8 +1,8 @@
 import {
-  GET_MOVIES_STARTED,
+  GET_MOVIE_STARTED,
   GET_CAST_SUCCESS,
   GET_EXISTED_CAST_SUCCESS,
-  GET_MOVIES_FAILURE,
+  GET_MOVIE_FAILURE,
 } from '../types/types.js';
 import axios from 'axios';
 import {
@@ -20,12 +20,12 @@ const getExistedCastSuccess = cast => ({
   payload: cast,
 });
 //Using the same actions as in movies because they doesn't differ
-const getMoviesStarted = () => ({
-  type: GET_MOVIES_STARTED
+const getMovieStarted = () => ({
+  type: GET_MOVIE_STARTED
 });
 
-const getMoviesFailure = error => ({
-  type: GET_MOVIES_FAILURE,
+const getMovieFailure = error => ({
+  type: GET_MOVIE_FAILURE,
   payload: {
     error
   }
@@ -44,14 +44,14 @@ export const getCast = () => {
     }
     else {
       //Otherwise download the new one
-      dispatch(getMoviesStarted());
+      dispatch(getMovieStarted());
       axios
         .get(getMovieRequest + id + getCastRequest + APIkey)
         .then(res => {
           dispatch(getCastSuccess(res.data));
         })
         .catch(err => {
-          dispatch(getMoviesFailure(err.message));
+          dispatch(getMovieFailure(err.message));
         });
     }
   }

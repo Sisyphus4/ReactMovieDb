@@ -3,6 +3,7 @@ import { store } from 'react-notifications-component';
 import {
   imgsrc185,
 } from '../../movieDbAPI/moiveDb.js';
+import { Spinner } from '../Spinner/Spinner';
 
 //Here I try to use class component instead of function in order to get familiar with it
 
@@ -26,24 +27,26 @@ class PopularMovies extends React.Component {
     });
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.showMovies();
   }
 
   render() {
-    return !this.props.movies || this.props.movies.length === 0
-      ? <div>
-        There are no movies.
+    return this.props.loading
+      ? <Spinner />
+      : !this.props.movies || this.props.movies.length === 0
+        ? <div>
+          {this.props.error}
     </div>
-      : <div className='popularMovies'>
-        {this.props.movies.map(movie =>
-          <div key={movie.id} className='oneOfMovies' onClick={(e) => this.handleMovieClick(movie, e)}>
-            <h1>{movie.original_title}</h1>
-            <img src={imgsrc185 + movie.poster_path} />
-            <p>Release date: {movie.release_date}</p>
-            <button className='compareButton' type='button' onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
-          </div>)}
-      </div>;
+        : <div className='popularMovies'>
+          {this.props.movies.map(movie =>
+            <div key={movie.id} className='oneOfMovies' onClick={(e) => this.handleMovieClick(movie, e)}>
+              <h1>{movie.original_title}</h1>
+              <img src={imgsrc185 + movie.poster_path} />
+              <p>Release date: {movie.release_date}</p>
+              <button className='compareButton' type='button' onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
+            </div>)}
+        </div>;
   }
 }
 

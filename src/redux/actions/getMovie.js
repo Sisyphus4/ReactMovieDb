@@ -1,7 +1,7 @@
 import {
-  GET_MOVIES_STARTED,
+  GET_MOVIE_STARTED,
   GET_MOVIE_SUCCESS,
-  GET_MOVIES_FAILURE,
+  GET_MOVIE_FAILURE,
   GET_EXISTED_MOVIE_SUCCESS,
 } from '../types/types.js';
 import axios from 'axios';
@@ -20,12 +20,12 @@ const getExistedMovieSuccess = movie => ({
   payload: movie,
 });
 
-const getMoviesStarted = () => ({
-  type: GET_MOVIES_STARTED
+const getMovieStarted = () => ({
+  type: GET_MOVIE_STARTED,
 });
 
-const getMoviesFailure = error => ({
-  type: GET_MOVIES_FAILURE,
+const getMovieFailure = error => ({
+  type: GET_MOVIE_FAILURE,
   payload: {
     error
   }
@@ -41,14 +41,14 @@ export const getMovie = (id) => {
     }
     else {
       //Otherwise download the new one
-      dispatch(getMoviesStarted());
+      dispatch(getMovieStarted());
       axios
         .get(getMovieRequest + id + APIkey)
         .then(res => {
           dispatch(getMovieSuccess(res.data));
         })
         .catch(err => {
-          dispatch(getMoviesFailure(err.message));
+          dispatch(getMovieFailure(err.message));
         });
     }
   }
