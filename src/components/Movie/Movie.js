@@ -19,7 +19,7 @@ export const Movie = props => {
       }
     })
   }
-  const id = parseInt(props.match.params.id, 10); //movie's id
+  const id = parseInt(props.match.params.id, 10); // movie's id
   useEffect(() => {
     props.getMovie(id);
   }, [1]);

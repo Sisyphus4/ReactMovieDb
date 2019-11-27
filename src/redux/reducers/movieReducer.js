@@ -57,7 +57,7 @@ export default function movieReducer(state = initialState, action) {
         loading: false,
         error: '',
         cast: action.payload,
-        //We keep cast that we've downloaded in order not to make an extra server request 
+        // We keep cast that we've downloaded in order not to make an extra server request 
         storedCast: [...state.storedCast, action.payload],
       };
     default:

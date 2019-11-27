@@ -33,6 +33,7 @@ img{
   margin-left:0;
 }
 .navBar{
+  display: flex;
   font-weight: bolder;
   font-size: 23px;  
   background-color: rgb(12, 94, 100);
@@ -98,4 +99,20 @@ img{
 .spinner img{
   display: block;
   margin-top: 10%;
+}
+
+.searchBar{
+  margin-left: auto;
+}
+.MovieList{
+  position: absolute;
+  background-color: white;
+}
+.MovieList ul{
+  list-style-type: none;
+  padding: 3%;
+}
+.MovieList li{
+  border-style: dashed;
+  border-width: thin;
 }

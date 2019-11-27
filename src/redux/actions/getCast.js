@@ -9,7 +9,7 @@ import {
   APIkey,
   getCastRequest,
   getMovieRequest,
-} from '../../movieDbAPI/moiveDb.js';
+} from '../../movieDbAPI/movieDb';
 
 const getCastSuccess = (cast) => ({
   type: GET_CAST_SUCCESS,
@@ -34,19 +34,20 @@ const getMovieFailure = error => ({
 export const getCast = () => {
   return (dispatch, getState) => {
     let id = getState().movieReducer.movie.id;
-    
-    //Check if the cast is already downloaded
+    const request = getMovieRequest + id + getCastRequest + APIkey;
+
+    // Check if the cast is already downloaded
     let neededCast = getState().movieReducer.storedCast.find((cast) => cast.id === id);
     
     if (neededCast) {
-      //If it is then just return the existed one
+      // If it is then just return the existed one
       dispatch(getExistedCastSuccess(neededCast))
     }
     else {
       //Otherwise download the new one
       dispatch(getMovieStarted());
       axios
-        .get(getMovieRequest + id + getCastRequest + APIkey)
+        .get(request)
         .then(res => {
           dispatch(getCastSuccess(res.data));
         })

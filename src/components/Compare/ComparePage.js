@@ -9,30 +9,30 @@ export const ComparePage = props => {
   let history = useHistory();
 
   const handleMovieClick = (movie) => {
-    history.push('.././movie/' + movie.id); //send us to movie page
+    history.push('.././movie/' + movie.id); // send us to movie page
   };
 
-  //Remove one specific movie
+  // Remove one specific movie
   const handleDeleteClick = (id,e) => {
     e.stopPropagation();
     props.removeComparedMovie(id);
     setMovie([]);
   };
 
-  //Empty comparedId array
+  // Empty comparedId array
   const handleClearClick = () => {
     props.clearComparedMovies(); 
-    setMovie([]); //Empty moviesToCompare
+    setMovie([]); // Empty moviesToCompare
   }
 
-  //Check out if our movies are in store otherwise download them
+  // Check out if our movies are in store otherwise download them
   useEffect(() => {
     for (let id of props.comparedId) {
       props.getMovie(id);
     }
   }, [1]);
 
-  //Getting compared movies from detailed movies
+  // Getting compared movies from detailed movies
   for (let movie of props.detailedMovies) {
     if (movie.id == props.comparedId[0] || movie.id == props.comparedId[1]) {
       if (moviesToCompare[0] != movie && moviesToCompare[1] != movie) {
