@@ -3,12 +3,12 @@ import {
   GET_MOVIE_SUCCESS,
   GET_MOVIES_FAILURE,
   GET_EXISTED_MOVIE_SUCCESS,
-} from '../types/types.js';
+} from '../types/types';
 import axios from 'axios';
 import {
   APIkey,
   getMovieRequest,
-} from '../../movieDbAPI/moiveDb.js';
+} from '../../movieDbAPI/movieDb';
 
 const getMovieSuccess = movie => ({
   type: GET_MOVIE_SUCCESS,
@@ -32,18 +32,19 @@ const getMoviesFailure = error => ({
 });
 
 export const getMovie = (id) => {
+  const request = getMovieRequest + id + APIkey;
   return (dispatch, getState) => {
-    //Check if the movie is already downloaded
+    // Check if the movie is already downloaded
     let neededMovie = getState().movieReducer.detailedMovies.find((movie) => movie.id === id);
     if (neededMovie) {
-      //If it is then just return the existed one
+      // If it is then just return the existed one
       dispatch(getExistedMovieSuccess(neededMovie));
     }
     else {
-      //Otherwise download the new one
+      // Otherwise download the new one
       dispatch(getMoviesStarted());
       axios
-        .get(getMovieRequest + id + APIkey)
+        .get(request)
         .then(res => {
           dispatch(getMovieSuccess(res.data));
         })

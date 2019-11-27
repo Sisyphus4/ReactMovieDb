@@ -1,17 +1,19 @@
 import {
   GET_MOVIES_STARTED,
-  GET_MOVIES_SUCCESS,
+  SEARCH_MOVIE_SUCCESS,
   GET_MOVIES_FAILURE,
 } from '../types/types.js';
 import axios from 'axios';
 
 import {
-  getPopularMoviesRequest,
+  searchMovieRequest,
+  APIkey,
+  query,
 } from '../../movieDbAPI/movieDb';
 
 
-const getMoviesSuccess = movies => ({
-  type: GET_MOVIES_SUCCESS,
+const searchMovieSuccess = movies => ({
+  type: SEARCH_MOVIE_SUCCESS,
   payload: movies
 });
 
@@ -26,13 +28,15 @@ const getMoviesFailure = error => ({
   }
 });
 
-export const getMovies = () => {
+export const searchMovie = (searchedMovie) => {
+  const request = searchMovieRequest + APIkey + query + searchedMovie;
+  
   return dispatch => {
     dispatch(getMoviesStarted());
     axios
-      .get(getPopularMoviesRequest)
+      .get(request)
       .then(res => {
-        dispatch(getMoviesSuccess(res.data.results));
+        dispatch(searchMovieSuccess(res.data.results));
       })
       .catch(err => {
         dispatch(getMoviesFailure(err.message));
