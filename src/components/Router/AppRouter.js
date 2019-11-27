@@ -5,13 +5,12 @@ import { MovieContainer } from '../Movie/MovieContainer';
 import { ComparePageContainer } from '../Compare/ComparePageContainer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NavBar } from './NavBar';
-import {SearchMoviePage} from '../Search/SearchMoviePage';
-
+import { SearchMoviePage } from '../Search/SearchMoviePage';
+import { Footer } from '../About/Footer'
 
 export const AppRouter = () => {
   return (
     <Router>
-      <div>
         <NavBar />
         <Switch>
           <Route path='/' exact component={PopularMoviesContainer} />
@@ -20,7 +19,7 @@ export const AppRouter = () => {
           <Route path='/movie/:id' component={MovieContainer} />
           <Route path='/searchResults' component={SearchMoviePage} />
         </Switch>
-      </div>
+      <Footer />
     </Router>
   );
 };
