@@ -25,7 +25,8 @@
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "underscore": "^1.9.1"
   },
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
