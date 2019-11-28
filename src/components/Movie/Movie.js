@@ -24,10 +24,10 @@ export const Movie = props => {
   }, [1]);
 
 
-  return props.movie
+  return (props.movie && props.movie.id === id)
     ? (
       <div className='theMovie'>
-        <MovieDescription movie={props.movie}/>
+        <MovieDescription />
         <button className='compareButton' type='button' onClick={handleCompareClick}>Add to Compare</button>
         <MovieCastContainer />
       </div>)
