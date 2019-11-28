@@ -26,10 +26,10 @@ export const Movie = props => {
 
   return props.loading
     ? <Spinner />
-    : props.movie
+    : (props.movie && props.movie.id === id)
       ? (
         <div className='theMovie'>
-          <MovieDescription movie={props.movie} />
+          <MovieDescription />
           <button className='compareButton' type='button' onClick={handleCompareClick}>Add to Compare</button>
           <MovieCastContainer />
         </div>)
