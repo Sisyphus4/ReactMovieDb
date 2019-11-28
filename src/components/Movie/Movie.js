@@ -26,9 +26,9 @@ export const Movie = props => {
 
   return (props.movie && props.movie.id === id)
     ? (
-      <div className='theMovie'>
+      <div className='TheMovie'>
         <MovieDescription />
-        <button className='compareButton' type='button' onClick={handleCompareClick}>Add to Compare</button>
+        <button className='TheMovie-CompareButton' type='button' onClick={handleCompareClick}>Add to Compare</button>
         <MovieCastContainer />
       </div>)
     : <div>There is no movie</div>

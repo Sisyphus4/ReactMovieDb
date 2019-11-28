@@ -6,15 +6,15 @@ import { SearchBar } from '../Search/SearchBar'
 export const NavBar = () => {
     const count = useSelector(state => state.moviesReducer.comparedId.length);
     return (
-        <nav className='navBar'>
-            <Link className="link" to="/">
-                <button className='navButton' type='button'>Home</button>
+        <nav className='NavBar'>
+            <Link className="NavBar-Link" to="/">
+                <button className='NavBar-NavButton' type='button'>Home</button>
             </Link>
-            <Link className='link' to='/Compare/'>
-                <button className='navButton' type='button' disabled={!count}>Compare({count})</button>
+            <Link className='NavBar-Link' to='/Compare/'>
+                <button className='NavBar-NavButton' type='button' disabled={!count}>Compare({count})</button>
             </Link>
-            <Link className='link' to='/about/'>
-                <button className='navButton' type='button'>About</button>
+            <Link className='NavBar-Link' to='/about/'>
+                <button className='NavBar-NavButton' type='button'>About</button>
             </Link>
             <SearchBar/>
         </nav>
