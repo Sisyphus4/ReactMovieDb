@@ -95,6 +95,12 @@ img{
   height: 46%;
   width: 50px;
 }
+
+.spinner img{
+  display: block;
+  margin-top: 10%;
+}
+
 .searchBar{
   margin-left: auto;
 }
