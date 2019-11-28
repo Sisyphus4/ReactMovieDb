@@ -1,5 +1,6 @@
 import React from 'react';
 import { store } from 'react-notifications-component';
+import {Spinner} from '../Spinner/Spinner'
 import {
   imgsrc185,
 } from '../../movieDbAPI/movieDb.js';
@@ -31,9 +32,11 @@ class PopularMovies extends React.Component {
   }
 
   render() {
-    return !this.props.movies || this.props.movies.length === 0
-      ? <div>
-        There are no movies.
+    return this.props.loading
+      ? <Spinner />
+      : !this.props.movies || this.props.movies.length === 0
+        ? <div>
+          {this.props.error}
     </div>
       : <div className='PopularMovies'>
         {this.props.movies.map(movie => {

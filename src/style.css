@@ -98,6 +98,12 @@ img{
 .SearchBar{
   margin-left: auto;
 }
+
+.Spinner img{
+  display: block;
+  margin-top: 10%;
+}
+
 .MovieList{
   position: absolute;
   background-color: white;

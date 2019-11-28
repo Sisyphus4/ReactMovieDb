@@ -13,8 +13,8 @@ import {
 const initialState = {
   loading: false,
   movies: [],
+  error: '',
   searchResults: [],
-  error: null,
   comparedId: [],
   inputActive: false,
 };
@@ -44,7 +44,7 @@ export default function generalReducer(state = initialState, action) {
       return {
         ...state,
         loading: false,
-        error: null,
+        error: '',
         movies: action.payload,
       };
     case SEARCH_MOVIE_SUCCESS:
