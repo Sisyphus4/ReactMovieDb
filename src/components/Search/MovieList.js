@@ -9,7 +9,7 @@ export const MovieList = () => {
 
     var visibility = active ? 'visible' : 'hidden';
 
-    const history = useHistory();
+    const history = useHistory();   
 
     const handleMovieClick = (movie) => {
         history.push('/movie/' + movie.id); // send us to movie page

@@ -9,7 +9,8 @@ h1, p {
   left: 0;
   width: 100%;
   height: 100%;
-  overflow:scroll;
+  overflow-y:scroll;
+  overflow-x:hidden;
 }
 
 .popularMovies{
@@ -116,7 +117,7 @@ img{
 
 @keyframes example {
   from {width: 171px;}
-  to {width: 200px;}
+  to {width: 320px;}
 }
 
 #searchBar:focus{
@@ -127,18 +128,25 @@ img{
 }
 
 .MovieList{
+  height: 800px;
   position: absolute;
   background-color: white;
+  width:100%;
+  padding:0;
+  overflow-y:scroll;
+  overflow-x:hidden;
 }
 
 .MovieList ul{
   list-style-type: none;
-  padding: 3%;
+  padding: 0;
+  width:100%;
 }
 
 .MovieList li{
   border-style: dashed;
   border-width: thin;
+  margin-left:5px;
 }
 
 .MovieList li:hover{
