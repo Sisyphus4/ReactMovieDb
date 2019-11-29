@@ -5,18 +5,25 @@ import { SearchBar } from '../Search/SearchBar'
 
 export const NavBar = () => {
     const count = useSelector(state => state.moviesReducer.comparedId.length);
+
+    const handleClick = (e) => {
+        if (count === 0) {
+            e.preventDefault();
+        }
+    }
     return (
         <nav className='navBar'>
-            <Link className="link" to="/">
-                <button className='navButton' type='button'>Home</button>
+            <Link className={location.pathname == '/' ? 'Activelink' : 'link'} to="/">
+                Home
             </Link>
-            <Link className='link' to='/Compare/'>
-                <button className='navButton' type='button' disabled={!count}>Compare({count})</button>
+            <Link className={location.pathname == '/Compare/' ? 'Activelink' : 'link'} to='/Compare/' 
+            onClick={(e) => handleClick(e)}>
+                Compare({count})
             </Link>
-            <Link className='link' to='/about/'>
-                <button className='navButton' type='button'>About</button>
+            <Link className={location.pathname == '/about/' ? 'Activelink' : 'link'} to='/about/'>
+                About
             </Link>
-            <SearchBar/>
+            <SearchBar />
         </nav>
     );
 };
