@@ -21,9 +21,9 @@ const initialState = {
 
 function addComparedId(state, id) {
   var comparedId = [...state.comparedId];
-  comparedId.unshift(id); // provides liquidity to array
-  if (comparedId.length > 2)  // maximum 2 movies kept for comparison
-    comparedId.pop();
+  comparedId.push(id); // provides liquidity to array
+  if (comparedId.length > 4)  // maximum movies kept for comparison
+    comparedId.shift();
   return { ...state, comparedId }
 }
 

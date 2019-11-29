@@ -2,7 +2,9 @@ import { connect } from 'react-redux';
 import { clearComparedMovies } from '../../redux/actions/clearComparedMovies';
 import { removeComparedMovie } from '../../redux/actions/removeComparedMovie';
 import { getMovie } from '../../redux/actions/getMovie';
-import { ComparePage } from './ComparePage'
+import { ComparePage } from './ComparePage';
+import { setComparedId } from '../../redux/actions/setComparedId';
+
 
 const mapStateToProps = state => ({
   comparedId: state.moviesReducer.comparedId,
@@ -18,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     getMovie: (id) => {
       dispatch(getMovie(id));
+    },
+    setComparedId: (id) => {
+      dispatch(setComparedId(id));
     },
   };
 };

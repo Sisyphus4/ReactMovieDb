@@ -41,9 +41,9 @@ class PopularMovies extends React.Component {
       : <div className='popularMovies'>
         {this.props.movies.map(movie => {
           const imgsrc = imgsrc185 + movie.poster_path;
-          return <div key={movie.id} className='oneOfMovies' onClick={(e) => this.handleMovieClick(movie, e)}>
-            <h1>{movie.original_title}</h1>
-            <img src={imgsrc} />
+          return <div key={movie.id} className='oneOfMovies'>
+            <h2  onClick={(e) => this.handleMovieClick(movie, e)}>{movie.original_title}</h2>
+            <img src={imgsrc}  onClick={(e) => this.handleMovieClick(movie, e)} />
             <p>Release date: {movie.release_date}</p>
             <button className='compareButton' type='button' onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
           </div>
