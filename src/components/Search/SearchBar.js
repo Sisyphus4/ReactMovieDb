@@ -1,20 +1,21 @@
-import React, { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect, useRef } from 'react';
 import { MovieList } from './MovieList';
 import { SearchForm } from './SearchForm'
-import {
-    SET_ACTIVE_FALSE,
-} from '../../redux/types/types';
+
 
 export const SearchBar = (props) => {
-    const dispatch = useDispatch();
     const searchInput = useRef(null);
+    const [active, setActive] = useState(false);
 
     // If user clicks outside input, we make suggested list invisible
     const handleOutsideClick = (e) => {
         if (searchInput.current && !searchInput.current.contains(e.target)) {
-            dispatch({ type: SET_ACTIVE_FALSE });
+            setActive(false);
         }
+    }
+
+    const handleFocus = () => {
+        setActive(true);
     }
 
     const OnMovieClick = (movie) => {
@@ -29,7 +30,7 @@ export const SearchBar = (props) => {
     }, [1]);
 
     return <div className='searchBar'>
-        <SearchForm ref={searchInput} />
-        <MovieList  OnMovieClick={(movie)=>OnMovieClick(movie)}/>
+        <SearchForm ref={searchInput} OnFocus={() => handleFocus()} />
+        <MovieList active={active} OnMovieClick={(movie) => OnMovieClick(movie)} />
     </div>
 }

@@ -27,7 +27,7 @@ export const SearchForm = React.forwardRef((props, ref) => {
 
     // We make suggested list visible once the input is focused
     const handleFocus = () => {
-        dispatch({ type: SET_ACTIVE_TRUE });
+        props.OnFocus();
     }
     return <form onSubmit={(e) => handleSubmit(document.getElementById('searchBar').value, e)}>
         <input ref={ref}

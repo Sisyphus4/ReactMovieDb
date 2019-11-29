@@ -4,10 +4,8 @@ import { useSelector } from 'react-redux';
 
 export const MovieList = (props) => {
     const searchResults = useSelector(state => state.moviesReducer.searchResults);
-    const active = useSelector(state => state.moviesReducer.inputActive);
-
-    var visibility = active ? 'visible' : 'hidden';
-
+    
+    var visibility = props.active ? 'visible' : 'hidden';
 
     const handleMovieClick = (movie) => {
         props.OnMovieClick(movie);

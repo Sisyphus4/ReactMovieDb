@@ -12,7 +12,6 @@ export const NavBar = () => {
 
     const handleMovieClick = (movie) => {
         history.push('/movie/' + movie.id); // send us to movie page
-        location.reload();
     };
 
     return (
@@ -26,7 +25,7 @@ export const NavBar = () => {
             <Link className='link' to='/about/'>
                 <button className='navButton' type='button'>About</button>
             </Link>
-            {/*<SearchBar OnMovieClick={handleMovieClick}/>*/}
+            <SearchBar OnMovieClick={handleMovieClick}/>
         </nav>
     );
 };

@@ -6,8 +6,6 @@ import {
   CLEAR_COMPARED_MOVIES,
   SEARCH_MOVIE_SUCCESS,
   REMOVE_COMPARED_MOVIE,
-  SET_ACTIVE_TRUE,
-  SET_ACTIVE_FALSE,
 } from '../types/types.js';
 
 const initialState = {
@@ -16,7 +14,6 @@ const initialState = {
   error: '',
   searchResults: [],
   comparedId: [],
-  inputActive: false,
 };
 
 function addComparedId(state, id) {
@@ -69,16 +66,6 @@ export default function generalReducer(state = initialState, action) {
       };
     case REMOVE_COMPARED_MOVIE:
       return removeId(state, action.payload);
-    case SET_ACTIVE_TRUE:
-      return {
-        ...state,
-        inputActive: true,
-      };
-    case SET_ACTIVE_FALSE:
-      return {
-        ...state,
-        inputActive: false,
-      };
     default:
       return state;
   }
