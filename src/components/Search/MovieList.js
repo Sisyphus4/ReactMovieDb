@@ -19,7 +19,9 @@ export const MovieList = () => {
     return <div id='MovieList' className='MovieList' style={{ visibility: visibility }}>
         <ul>
             {searchResults.map(movie =>
-                <li key = {movie.id} onClick={() => handleMovieClick(movie)}>{movie.original_title}</li>
+                <li key = {movie.id} onClick={() => handleMovieClick(movie)}>
+                    <p className='MovieList-Title'>{movie.original_title}</p> 
+                    <p className='MovieList-Date'>{movie.release_date}</p></li>
             )}
         </ul>
     </div>

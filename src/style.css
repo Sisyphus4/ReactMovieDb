@@ -11,20 +11,24 @@ h1, p {
   height: 100%;
   overflow:scroll;
 }
+
 .popularMovies{
   display:flex;
   justify-content: space-between;
   flex-wrap:wrap;
 }
+
 .oneOfMovies{
   width:250px;
   height: 600px;
   border: solid 1px;
   padding: 15px;
 }
+
 .theMovie{
   padding-left: 50px;
 }
+
 img{
   margin: auto;
 }
@@ -32,6 +36,7 @@ img{
   margin-top:0;
   margin-left:0;
 }
+
 .navBar{
   display: flex;
   font-weight: bolder;
@@ -42,20 +47,24 @@ img{
   padding:30px;
   font-size:30px;
 }
+
 .about a{
  display:block;
 }
+
 .about img{
   height:600px;
   width:400px;
   margin-top:-16%;
   margin-left:40%;
 }
+
 .comparedMovies{
   display: flex;
   flex-direction: row;
   font-size:30px;
 }
+
 .navButton{
   background-color: rgb(173, 247, 240); /* Green */
   border: solid 1px black;
@@ -104,15 +113,46 @@ img{
 .searchBar{
   margin-left: auto;
 }
+
+@keyframes example {
+  from {width: 171px;}
+  to {width: 200px;}
+}
+
+#searchBar:focus{
+  animation-name: example;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  height: 23px;
+}
+
 .MovieList{
   position: absolute;
   background-color: white;
 }
+
 .MovieList ul{
   list-style-type: none;
   padding: 3%;
 }
+
 .MovieList li{
   border-style: dashed;
   border-width: thin;
+}
+
+.MovieList li:hover{
+  background-color: rgb(174, 170, 235);
+}
+
+.MovieList-Title{
+  margin: 0;
+  padding: 0;
+}
+
+.MovieList-Date{
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  font-size: 14px;
 }
