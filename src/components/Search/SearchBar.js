@@ -12,7 +12,6 @@ export const SearchBar = (props) => {
 
     // If user clicks outside input, we make suggested list invisible
     const handleOutsideClick = (e) => {
-        console.log(searchInput.current == e.target)
         if (searchInput.current && !searchInput.current.contains(e.target)) {
             dispatch({ type: SET_ACTIVE_FALSE });
         }

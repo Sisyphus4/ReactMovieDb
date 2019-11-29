@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { getMovies } from '../../redux/actions/getMovies';
 import PopularMovies from './PopularMovies';
 import { setComparedId } from '../../redux/actions/setComparedId';
+import { removeComparedMovie } from '../../redux/actions/removeComparedMovie';
 
 
 const mapStateToProps = state => ({
@@ -10,6 +11,7 @@ const mapStateToProps = state => ({
   detailedMovies: state.movieReducer.detailedMovies,
   loading: state.moviesReducer.loading,
   error: state.moviesReducer.error,
+  comparedId:state.moviesReducer.comparedId,
 });
 const mapDispatchToProps = dispatch => {
   return {
@@ -18,6 +20,9 @@ const mapDispatchToProps = dispatch => {
     },
     setComparedId: (id) => {
       dispatch(setComparedId(id));
+    },
+    removeComparedMovie: (id) => {
+      dispatch(removeComparedMovie(id));
     },
   };
 };

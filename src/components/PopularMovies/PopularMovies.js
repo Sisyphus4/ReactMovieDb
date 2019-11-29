@@ -1,6 +1,6 @@
 import React from 'react';
 import { store } from 'react-notifications-component';
-import {Spinner} from '../Spinner/Spinner'
+import { Spinner } from '../Spinner/Spinner'
 import {
   imgsrc185,
 } from '../../movieDbAPI/movieDb.js';
@@ -27,6 +27,11 @@ class PopularMovies extends React.Component {
     });
   }
 
+  handleDeleteClick (id, e) {
+    e.stopPropagation();
+    this.props.removeComparedMovie(id);
+  }
+
   componentDidMount() {
     this.props.showMovies();
   }
@@ -37,18 +42,21 @@ class PopularMovies extends React.Component {
       : !this.props.movies || this.props.movies.length === 0
         ? <div>
           {this.props.error}
-    </div>
-      : <div className='popularMovies'>
-        {this.props.movies.map(movie => {
-          const imgsrc = imgsrc185 + movie.poster_path;
-          return <div key={movie.id} className='oneOfMovies'>
-            <h2  onClick={(e) => this.handleMovieClick(movie, e)}>{movie.original_title}</h2>
-            <img src={imgsrc}  onClick={(e) => this.handleMovieClick(movie, e)} />
-            <p>Release date: {movie.release_date}</p>
-            <button className='compareButton' type='button' onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
-          </div>
-        })}
-      </div>;
+        </div>
+        : <div className='popularMovies'>
+          {this.props.movies.map(movie => {
+            const imgsrc = imgsrc185 + movie.poster_path;
+            return <div key={movie.id} className='oneOfMovies'>
+              <h2 onClick={(e) => this.handleMovieClick(movie, e)}>{movie.original_title}</h2>
+              <img src={imgsrc} onClick={(e) => this.handleMovieClick(movie, e)} />
+              <p>Release date: {movie.release_date}</p>
+              {!(this.props.comparedId && this.props.comparedId.some((elem) => elem === movie.id))
+              ? <button className='compareButton' type='button' onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
+              : <button className='compareButton' type='button' onClick={(e) => this.handleDeleteClick(movie.id, e)}>Remove</button>
+              }
+            </div>
+          })}
+        </div>;
   }
 }
 
