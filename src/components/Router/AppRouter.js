@@ -6,6 +6,8 @@ import { ComparePageContainer } from '../Compare/ComparePageContainer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NavBar } from './NavBar';
 import { SearchMoviePage } from '../Search/SearchMoviePage';
+import { NoMatch } from './NoMatch'
+
 
 
 export const AppRouter = () => {
@@ -19,6 +21,7 @@ export const AppRouter = () => {
           <Route path='/compare/' component={ComparePageContainer} />
           <Route path='/movie/:id' component={MovieContainer} />
           <Route path='/searchResults' component={SearchMoviePage} />
+          <Route component={NoMatch} />
         </Switch>
       </div>
     </Router>
