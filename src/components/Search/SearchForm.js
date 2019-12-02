@@ -22,6 +22,7 @@ export const SearchForm = React.forwardRef((props, ref) => {
 
     // We dinamically display movies that user is searching
     const handleTyping = (event) => {
+        if(event.target.value)
         debouncedDispatch(event.target.value);
     }
 
