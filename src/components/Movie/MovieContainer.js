@@ -5,6 +5,8 @@ import { Movie } from './Movie';
 
 const mapStateToProps = state => ({
   movie: state.movieReducer.movie,
+  loading: state.movieReducer.loading,
+  error: state.movieReducer.error,
 })
 const mapDispatchToProps = (dispatch) => {
   return {
