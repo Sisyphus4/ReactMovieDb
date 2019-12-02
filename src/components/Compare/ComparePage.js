@@ -63,7 +63,8 @@ export const ComparePage = props => {
         {moviesToCompare.map(movie =>
           <div key={movie.id} className='oneOfComparedMovies' >
             <MovieToCompare movie={movie} OnMovieClick={handleMovieClick}/>
-            <button className='compareButton' type='button' onClick={(e) => handleDeleteClick(movie.id, e)}>Remove</button>
+            <button className='compareButton' type='button' 
+            onClick={(e) => handleDeleteClick(movie.id, e)}>Remove from Compare</button>
           </div>)}
         <div className='oneOfComparedMovies'>
         <p>Add movie to compare list</p>

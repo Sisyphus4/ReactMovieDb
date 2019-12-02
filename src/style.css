@@ -13,15 +13,22 @@ h1, p {
 }
 .popularMovies{
   display:flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap:wrap;
 }
+
+.popularMovies h1{
+  text-align: center;
+  width:100%;
+}
+
 .oneOfMovies{
   width:250px;
   height: 500px;
   border: solid 1px;
   padding: 15px;
 }
+
 .oneOfMovies h2{
   width:100%;
   height: 80px;
@@ -76,7 +83,9 @@ img{
   width: 17%;
   margin: 20px;
 }
-
+.oneOfComparedMovies p{
+  font-size: 20px;
+}
 .oneOfComparedMovies h3{
   height: 100px;
   width: 100%;
@@ -112,6 +121,7 @@ img{
 .MovieList ul{
   list-style-type: none;
   padding: 3%;
+  margin: 0;
 }
 .MovieList li{
   border-style: dashed;

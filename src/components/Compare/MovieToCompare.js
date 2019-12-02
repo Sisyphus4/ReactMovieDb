@@ -16,7 +16,7 @@ export const MovieToCompare = (props) => {
             <h3 onClick={() => handleMovieClick(props.movie)}>Title: {props.movie.original_title}</h3>
             <img src={imgsrc} onClick={() => handleMovieClick(props.movie)} />
             <p>Release: {props.movie.release_date}</p>
-            <p>Budget: {props.movie.budget.toLocaleString()}</p>
+            <p>Budget $: {props.movie.budget ? props.movie.budget.toLocaleString() : '-'}</p>
             <p>Average vote: {props.movie.vote_average}/10</p>
         </>
     )

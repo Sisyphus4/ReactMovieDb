@@ -30,16 +30,18 @@ const getMoviesFailure = error => ({
 
 export const searchMovie = (searchedMovie) => {
   const request = searchMovieRequest + APIkey + query + searchedMovie;
-  
-  return dispatch => {
-    dispatch(getMoviesStarted());
-    axios
-      .get(request)
-      .then(res => {
-        dispatch(searchMovieSuccess(res.data.results));
-      })
-      .catch(err => {
-        dispatch(getMoviesFailure(err.message));
-      });
-  };
+
+  return searchedMovie
+    ? dispatch => {
+      dispatch(getMoviesStarted());
+      axios
+        .get(request)
+        .then(res => {
+          dispatch(searchMovieSuccess(res.data.results.slice(0,10)));
+        })
+        .catch(err => {
+          dispatch(getMoviesFailure(err.message));
+        });
+    }
+    : dispatch => dispatch(searchMovieSuccess([]));
 };

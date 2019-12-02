@@ -44,6 +44,7 @@ class PopularMovies extends React.Component {
           {this.props.error}
         </div>
         : <div className='popularMovies'>
+          <h1>The most popular recent moveis</h1>
           {this.props.movies.map(movie => {
             const imgsrc = imgsrc185 + movie.poster_path;
             return <div key={movie.id} className='oneOfMovies'>
@@ -51,8 +52,10 @@ class PopularMovies extends React.Component {
               <img src={imgsrc} onClick={(e) => this.handleMovieClick(movie, e)} />
               <p>Release date: {movie.release_date}</p>
               {!(this.props.comparedId && this.props.comparedId.some((elem) => elem === movie.id))
-              ? <button className='compareButton' type='button' onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
-              : <button className='compareButton' type='button' onClick={(e) => this.handleDeleteClick(movie.id, e)}>Remove</button>
+              ? <button className='compareButton' type='button' 
+              onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
+              : <button className='compareButton' type='button' 
+              onClick={(e) => this.handleDeleteClick(movie.id, e)}>Remove from Compare</button>
               }
             </div>
           })}
