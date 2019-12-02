@@ -1,5 +1,4 @@
 import {
-  GET_MOVIES_STARTED,
   SEARCH_MOVIE_SUCCESS,
   GET_MOVIES_FAILURE,
 } from '../types/types.js';
@@ -17,10 +16,6 @@ const searchMovieSuccess = movies => ({
   payload: movies
 });
 
-const getMoviesStarted = () => ({
-  type: GET_MOVIES_STARTED
-});
-
 const getMoviesFailure = error => ({
   type: GET_MOVIES_FAILURE,
   payload: {
@@ -32,7 +27,6 @@ export const searchMovie = (searchedMovie) => {
   const request = searchMovieRequest + APIkey + query + searchedMovie;
   
   return dispatch => {
-    dispatch(getMoviesStarted());
     axios
       .get(request)
       .then(res => {
