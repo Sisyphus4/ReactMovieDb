@@ -24,7 +24,7 @@ export const SearchBar = () => {
         }
     }, [1]);
 
-    return <div className='searchBar'>
+    return <div className='SearchBar'>
         <SearchForm ref={searchInput} />
         <MovieList />
     </div>

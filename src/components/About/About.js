@@ -2,7 +2,7 @@ import React from 'react';
 
 export const About = () => {
   return (
-    <div className='about'>
+    <div className='About'>
       <h4>Hello, I'm Chernikov Alexander</h4>
       <p>This web-app is made in educational purposes and has no commersial value.
         It uses external API from www.themoviedb.org in order to access the movie data base

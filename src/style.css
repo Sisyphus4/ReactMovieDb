@@ -16,61 +16,53 @@ body{
   overflow-y:scroll;
   overflow-x:hidden;
 }
-
-.popularMovies{
+.PopularMovies{
   display:flex;
   justify-content: space-between;
   flex-wrap:wrap;
 }
-
-.oneOfMovies{
+.OneOfMovies {
   width:250px;
   height: 600px;
   border: solid 1px;
   padding: 15px;
 }
-
-.theMovie{
+.TheMovie{
   padding-left: 50px;
 }
 
 img{
   margin: auto;
 }
-.cast{
+.Cast{
   margin-top:0;
   margin-left:0;
 }
-
-.navBar{
+.NavBar{
   display: flex;
   font-weight: bolder;
   font-size: 23px;  
   background-color: rgb(12, 94, 100);
 }
-.about{
+.About{
   padding:30px;
   font-size:30px;
 }
-
-.about a{
+.About a{
  display:block;
 }
-
-.about img{
+.About img{
   height:600px;
   width:400px;
   margin-top:-16%;
   margin-left:40%;
 }
-
-.comparedMovies{
+.ComparedMovies{
   display: flex;
   flex-direction: row;
   font-size:30px;
 }
-
-.navButton{
+.NavBar-NavButton{
   background-color: rgb(173, 247, 240); /* Green */
   border: solid 1px black;
   color: Black;
@@ -82,19 +74,19 @@ img{
   border-radius: 4px;
 }
 
-.link{
+.NavBar-Link{
   text-decoration: none;
 }
-.oneOfComparedMovies{
+.OneOfComparedMovies{
   height: 100%;
   width: 30%;
 
 }
-.oneOfComparedMovies h1{
+.OneOfComparedMovies h1{
   height: 100px;
   width: 100%;
 }
-.compareButton{
+.ComparedMovies-CompareButton, .OneOfMovies-CompareButton, .TheMovie-CompareButton{
   background-color: rgb(173, 247, 240); /* Green */
   border: solid 1px black;
   color: black;
@@ -105,12 +97,15 @@ img{
   height: 40px;
   width: 100px;
 }
-.compareDiv{
-  height: 315px;
+.ComparedMovies-CompareDiv{
+  height: 46%;
   width: 50px;
 }
+.SearchBar{
+  margin-left: auto;
+}
 
-.spinner img{
+.Spinner img{
   display: block;
   margin-top: 10%;
 }

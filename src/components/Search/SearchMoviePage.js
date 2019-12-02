@@ -30,10 +30,10 @@ export const SearchMoviePage = (props) => {
     };
 
     if (searchResults.length > 0) {
-        return <div className='popularMovies'>
+        return <div className='PopularMovies'>
             {searchResults.map(movie => {
                 const imgsrc = imgsrc185 + movie.poster_path;
-                return <div key={movie.id} className='oneOfMovies' onClick={(e) => handleClick(movie, e)}>
+                return <div key={movie.id} className='PopularMovies-OneOfMovies' onClick={(e) => handleClick(movie, e)}>
                     <h1>{movie.original_title}</h1>
                     <img src={imgsrc} />
                     <p>Release date: {movie.release_date}</p>

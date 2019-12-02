@@ -38,14 +38,14 @@ class PopularMovies extends React.Component {
         ? <div>
           {this.props.error}
     </div>
-      : <div className='popularMovies'>
+      : <div className='PopularMovies'>
         {this.props.movies.map(movie => {
           const imgsrc = imgsrc185 + movie.poster_path;
-          return <div key={movie.id} className='oneOfMovies' onClick={(e) => this.handleMovieClick(movie, e)}>
+          return <div key={movie.id} className='OneOfMovies' onClick={(e) => this.handleMovieClick(movie, e)}>
             <h1>{movie.original_title}</h1>
             <img src={imgsrc} />
             <p>Release date: {movie.release_date}</p>
-            <button className='compareButton' type='button' onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
+            <button className='OneOfMovies-CompareButton' type='button' onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
           </div>
         })}
       </div>;
