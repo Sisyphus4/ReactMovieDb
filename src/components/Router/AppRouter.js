@@ -6,6 +6,7 @@ import { ComparePageContainer } from '../Compare/ComparePageContainer';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { NavBar } from './NavBar';
 import { SearchMoviePage } from '../Search/SearchMoviePage';
+import { Footer } from '../About/Footer'
 import { NoMatch } from './NoMatch'
 
 
@@ -13,7 +14,6 @@ import { NoMatch } from './NoMatch'
 export const AppRouter = () => {
   return (
     <Router>
-      <div>
         <Route component={NavBar} />
         <Switch>
           <Route path='/' exact component={PopularMoviesContainer} />
@@ -23,7 +23,7 @@ export const AppRouter = () => {
           <Route path='/searchResults' component={SearchMoviePage} />
           <Route component={NoMatch} />
         </Switch>
-      </div>
+      <Footer />
     </Router>
   );
 };

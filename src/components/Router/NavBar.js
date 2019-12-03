@@ -12,15 +12,18 @@ export const NavBar = () => {
         }
     }
     return (
-        <nav className='navBar'>
-            <Link className={location.pathname == '/' ? 'Activelink link' : 'link'} to="/">
+        <nav className='NavBar'>
+            <Link className={location.pathname == '/' ? 'NavBar-Link_active NavBar-Link' : 'NavBar-Link'} 
+            to="/">
                 Home
             </Link>
-            <Link className={location.pathname == '/Compare/' ? 'Activelink link' : 'link'} to='/Compare/' 
+            <Link className={location.pathname == '/Compare/' ? 'NavBar-Link_active NavBar-Link' : 'NavBar-Link'} 
+            to='/Compare/' 
             onClick={(e) => handleClick(e)}>
                 Compare({count})
             </Link>
-            <Link className={location.pathname == '/about/' ? 'Activelink link' : 'link'} to='/about/'>
+            <Link className={location.pathname == '/about/' ? 'NavBar-Link_active NavBar-Link' : 'NavBar-Link'} 
+            to='/about/'>
                 About
             </Link>
             <SearchBar />
