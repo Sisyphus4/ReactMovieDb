@@ -58,12 +58,12 @@ export const ComparePage = props => {
 
   if (props.comparedId.length > 0) {
     return (
-      <div className='comparedMovies'>
+      <div className='ComparedMovies'>
         <button className='ComparedMovies-ClearButton' onClick={handleClearClick}>Clear all and exit</button>
         {moviesToCompare.map(movie =>
-          <div key={movie.id} className='oneOfComparedMovies' >
+          <div key={movie.id} className='OneOfComparedMovies' >
             <MovieToCompare movie={movie} OnMovieClick={handleMovieClick}/>
-            <button className='compareButton' type='button' 
+            <button className='ComparedMovies-CompareButton' type='button' 
             onClick={(e) => handleDeleteClick(movie.id, e)}>Remove from Compare</button>
           </div>)}
         <div className='oneOfComparedMovies'>

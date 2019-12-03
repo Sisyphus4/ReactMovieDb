@@ -35,7 +35,7 @@ export const getCast = () => {
   return (dispatch, getState) => {
     let id = getState().movieReducer.movie.id;
     const request = getMovieRequest + id + getCastRequest + APIkey;
-
+    
     // Check if the cast is already downloaded
     let neededCast = getState().movieReducer.storedCast.find((cast) => cast.id === id);
     

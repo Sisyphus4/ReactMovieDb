@@ -20,7 +20,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='Container'>
         <ReactNotifications />
         <AppRouter />
       </div>
@@ -28,7 +28,6 @@ class App extends Component {
   }
 }
 
-//render(<App />, document.getElementById('root'));
 ReactDOM.render(
   <Provider store={store}>
     <App />

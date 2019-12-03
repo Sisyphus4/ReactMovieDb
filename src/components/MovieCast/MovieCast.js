@@ -10,7 +10,7 @@ export const MovieCast = props => {
 
     return props.movieCast
         ? (
-            <div className='cast'>
+            <div className='Cast'>
                 <h4>Cast:</h4>
                 {props.movieCast.cast.map(actor =>
                     <span key={actor.name}>{actor.name}, </span>)}

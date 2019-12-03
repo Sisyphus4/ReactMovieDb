@@ -29,7 +29,7 @@ export const SearchBar = (props) => {
         }
     }, [1]);
 
-    return <div className='searchBar'>
+    return <div className='SearchBar'>
         <SearchForm ref={searchInput} OnFocus={() => handleFocus()} />
         <MovieList active={active} OnMovieClick={(movie) => OnMovieClick(movie)} />
     </div>
