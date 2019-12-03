@@ -65,7 +65,7 @@ img{
 
 .NavBar-Link{
   text-decoration: none;
-  background-color: rgb(173, 247, 240); /* Green */
+  background-color: rgb(173, 247, 240); 
   border: solid 1px black;
   color: Black;
   padding: 9px 20px;
@@ -76,9 +76,7 @@ img{
   font-family: Arial;
   font-weight: normal;
 }
-.NavBar-Link_active{
-  background-color: rgb(119, 9, 209); /* Green */
-}
+
 .OneOfComparedMovies{
   height: 100%;
   width: 30%;

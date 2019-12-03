@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from 'react-redux'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { SearchBar } from '../Search/SearchBar'
 
 export const NavBar = () => {
@@ -13,19 +13,28 @@ export const NavBar = () => {
     }
     return (
         <nav className='NavBar'>
-            <Link className={location.pathname == '/' ? 'NavBar-Link_active NavBar-Link' : 'NavBar-Link'} 
-            to="/">
+            <NavLink className='NavBar-Link'
+                activeStyle={{
+                    backgroundColor: 'Fuchsia',
+                }}
+                exact to="/">
                 Home
-            </Link>
-            <Link className={location.pathname == '/Compare/' ? 'NavBar-Link_active NavBar-Link' : 'NavBar-Link'} 
-            to='/Compare/' 
-            onClick={(e) => handleClick(e)}>
+            </NavLink>
+            <NavLink className='NavBar-Link'
+                exact to='/Compare/'
+                activeStyle={{
+                    backgroundColor: 'Fuchsia',
+                }}
+                onClick={(e) => handleClick(e)}>
                 Compare({count})
-            </Link>
-            <Link className={location.pathname == '/about/' ? 'NavBar-Link_active NavBar-Link' : 'NavBar-Link'} 
-            to='/about/'>
+            </NavLink>
+            <NavLink className='NavBar-Link'
+                activeStyle={{
+                    backgroundColor: 'Fuchsia',
+                }}
+                exact to='/about/'>
                 About
-            </Link>
+            </NavLink>
             <SearchBar />
         </nav>
     );
