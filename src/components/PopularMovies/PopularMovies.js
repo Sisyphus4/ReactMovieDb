@@ -51,7 +51,7 @@ class PopularMovies extends React.Component {
               <h2 onClick={(e) => this.handleMovieClick(movie, e)}>{movie.original_title}</h2>
               <img src={imgsrc} onClick={(e) => this.handleMovieClick(movie, e)} />
               <p>Release date: {movie.release_date}</p>
-              {!(this.props.comparedId && this.props.comparedId.some((elem) => elem === movie.id))
+              {!(this.props.comparedIds && this.props.comparedIds.some((elem) => elem === movie.id))
               ? <button className='OneOfMovies-CompareButton' type='button' 
               onClick={(e) => this.handleCompareClick(movie, e)}>Add to Compare</button>
               : <button className='OneOfMovies-CompareButton' type='button' 

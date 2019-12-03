@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
   detailedMovies: state.movieReducer.detailedMovies,
   loading: state.moviesReducer.loading,
   error: state.moviesReducer.error,
-  comparedId:state.moviesReducer.comparedId,
+  comparedIds:state.moviesReducer.comparedIds,
 });
 const mapDispatchToProps = dispatch => {
   return {

@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 export const NavBar = () => {
 
     const history = useHistory();
-    const count = useSelector(state => state.moviesReducer.comparedId.length);
+    const count = useSelector(state => state.moviesReducer.comparedIds.length);
 
     const handleMovieClick = (movie) => {
         history.push('/movie/' + movie.id); // send us to movie page

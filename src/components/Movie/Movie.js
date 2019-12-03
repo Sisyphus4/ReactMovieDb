@@ -35,7 +35,7 @@ export const Movie = props => {
       ? (
         <div className='TheMovie'>
           <MovieDescription />
-          {!(props.comparedId && props.comparedId.some((elem) => elem === id))
+          {!(props.comparedIds && props.comparedIds.some((elem) => elem === id))
             ? <button className='TheMovie-CompareButton' type='button'
               onClick={handleCompareClick}>Add to Compare</button>
             : <button className='TheMovie-CompareButton' type='button'

@@ -13,15 +13,15 @@ const initialState = {
   movies: [],
   error: '',
   searchResults: [],
-  comparedId: [],
+  comparedIds: [],
 };
 
 function addComparedId(state, id) {
-  var comparedId = [...state.comparedId];
-  comparedId.push(id); // provides liquidity to array
-  if (comparedId.length > 4)  // maximum movies kept for comparison
-    comparedId.shift();
-  return { ...state, comparedId }
+  var comparedIds = [...state.comparedIds];
+  comparedIds.push(id); // provides liquidity to array
+  if (comparedIds.length > 4)  // maximum movies kept for comparison
+    comparedIds.shift();
+  return { ...state, comparedIds }
 }
 
 function removeId(state, id) {

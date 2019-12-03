@@ -33,7 +33,7 @@ export const ComparePage = props => {
 
   // Check out if our movies are in store otherwise download them
   useEffect(() => {
-    for (let id of props.comparedId) {
+    for (let id of props.comparedIds) {
       props.getMovie(id);
     }
   });
@@ -41,7 +41,7 @@ export const ComparePage = props => {
   // Getting compared movies from detailed movies
 
   useEffect(() => {
-    for (let id of props.comparedId) {
+    for (let id of props.comparedIds) {
       let tempMovie = props.detailedMovies.find((movie) => movie.id === id);
       if (tempMovie) {
         if (!moviesToCompare.some((elem) => elem.id === tempMovie.id)) {
@@ -56,7 +56,7 @@ export const ComparePage = props => {
     }
   });
 
-  if (props.comparedId.length > 0) {
+  if (props.comparedIds.length > 0) {
     return (
       <div className='ComparedMovies'>
         <button className='ComparedMovies-ClearButton' onClick={handleClearClick}>Clear all and exit</button>

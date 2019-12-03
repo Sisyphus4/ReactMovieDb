@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
   movie: state.movieReducer.movie,
   loading: state.movieReducer.loading,
   error: state.movieReducer.error,
-  comparedId:state.moviesReducer.comparedId,
+  comparedIds:state.moviesReducer.comparedIds,
 })
 const mapDispatchToProps = (dispatch) => {
   return {
