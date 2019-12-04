@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { setComparedId } from '../../redux/actions/setComparedId';
 import {
     imgsrc185,
-} from '../../movieDbAPI/movieDb';
+} from '../../services/movieDbAPI/movieDb';
 
 
 export const SearchMoviePage = (props) => {
@@ -33,11 +33,11 @@ export const SearchMoviePage = (props) => {
         return <div className='PopularMovies'>
             {searchResults.map(movie => {
                 const imgsrc = imgsrc185 + movie.poster_path;
-                return <div key={movie.id} className='PopularMovies-OneOfMovies' onClick={(e) => handleClick(movie, e)}>
+                return <div key={movie.id} className='OneOfMovies' onClick={(e) => handleClick(movie, e)}>
                     <h1>{movie.original_title}</h1>
                     <img src={imgsrc} />
                     <p>Release date: {movie.release_date}</p>
-                    <button className='compareButton' type='button' onClick={(e) => handleCompareClick(movie, e)}>Add to Compare</button>
+                    <button className='OneOfMovies-CompareButton' type='button' onClick={(e) => handleCompareClick(movie, e)}>Add to Compare</button>
                 </div>
             })}
         </div>

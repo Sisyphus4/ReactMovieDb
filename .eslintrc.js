@@ -8,6 +8,7 @@ module.exports = {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly",
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -16,7 +17,8 @@ module.exports = {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "@babel/plugin-proposal-class-properties",
     ],
     "rules": {
         "react/jsx-uses-react": 1,

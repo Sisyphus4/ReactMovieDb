@@ -31,6 +31,9 @@ export const ComparePage = props => {
     setMovie([]); // Empty moviesToCompare
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  }
   // Check out if our movies are in store otherwise download them
   useEffect(() => {
     for (let id of props.comparedIds) {
@@ -48,7 +51,7 @@ export const ComparePage = props => {
           setMovie(moviesToCompare => {
             moviesToCompare.push(tempMovie); // provides liquidity to array
             if (moviesToCompare.length > 4)  // maximum movies kept for comparison
-            moviesToCompare.shift();
+              moviesToCompare.shift();
             return [...moviesToCompare]
           });
         }
@@ -62,13 +65,13 @@ export const ComparePage = props => {
         <button className='ComparedMovies-ClearButton' onClick={handleClearClick}>Clear all and exit</button>
         {moviesToCompare.map(movie =>
           <div key={movie.id} className='OneOfComparedMovies' >
-            <MovieToCompare movie={movie} OnMovieClick={handleMovieClick}/>
-            <button className='ComparedMovies-CompareButton' type='button' 
-            onClick={(e) => handleDeleteClick(movie.id, e)}>Remove from Compare</button>
+            <MovieToCompare movie={movie} OnMovieClick={handleMovieClick} />
+            <button className='ComparedMovies-CompareButton' type='button'
+              onClick={(e) => handleDeleteClick(movie.id, e)}>Remove from Compare</button>
           </div>)}
-        <div className='oneOfComparedMovies'>
-        <p>Add movie to compare list</p>
-        <SearchBar OnMovieClick={handleAddCompareClick} />
+        <div className='oneOfComparedMovies oneOfComparedMovies_search'>
+          <p>Add movie to compare list</p>
+          <SearchBar OnSubmit={(searchInputValue, e) => handleSubmit(e)} OnMovieClick={handleAddCompareClick} />
         </div>
       </div>
     )

@@ -2,7 +2,7 @@ import React from 'react'
 
 import {
     imgsrc185,
-} from '../../movieDbAPI/movieDb.js';
+} from '../../services/movieDbAPI/movieDb.js';
 
 export const MovieToCompare = (props) => {
     const imgsrc = imgsrc185 + props.movie.poster_path;
@@ -13,7 +13,7 @@ export const MovieToCompare = (props) => {
 
     return (
         <>
-            <h3 onClick={() => handleMovieClick(props.movie)}>Title: {props.movie.original_title}</h3>
+            <h3 onClick={() => handleMovieClick(props.movie)}>{props.movie.original_title}</h3>
             <img src={imgsrc} onClick={() => handleMovieClick(props.movie)} />
             <p>Release: {props.movie.release_date}</p>
             <p>Budget $: {props.movie.budget ? props.movie.budget.toLocaleString() : '-'}</p>

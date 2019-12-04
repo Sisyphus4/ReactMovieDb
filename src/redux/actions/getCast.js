@@ -4,12 +4,9 @@ import {
   GET_EXISTED_CAST_SUCCESS,
   GET_MOVIE_FAILURE,
 } from '../types/types.js';
-import axios from 'axios';
-import {
-  APIkey,
-  getCastRequest,
-  getMovieRequest,
-} from '../../movieDbAPI/movieDb';
+
+import MovieDbService from '../../services/movieDbAPI/MovieDbService';
+
 
 const getCastSuccess = (cast) => ({
   type: GET_CAST_SUCCESS,
@@ -34,11 +31,10 @@ const getMovieFailure = error => ({
 export const getCast = () => {
   return (dispatch, getState) => {
     let id = getState().movieReducer.movie.id;
-    const request = getMovieRequest + id + getCastRequest + APIkey;
-    
+
     // Check if the cast is already downloaded
     let neededCast = getState().movieReducer.storedCast.find((cast) => cast.id === id);
-    
+
     if (neededCast) {
       // If it is then just return the existed one
       dispatch(getExistedCastSuccess(neededCast))
@@ -46,10 +42,9 @@ export const getCast = () => {
     else {
       //Otherwise download the new one
       dispatch(getMovieStarted());
-      axios
-        .get(request)
-        .then(res => {
-          dispatch(getCastSuccess(res.data));
+      MovieDbService.getData('cast', id)
+        .then((res) => {
+          dispatch(getCastSuccess(res));
         })
         .catch(err => {
           dispatch(getMovieFailure(err.message));

@@ -3,7 +3,7 @@ import { store } from 'react-notifications-component';
 import { Spinner } from '../Spinner/Spinner'
 import {
   imgsrc185,
-} from '../../movieDbAPI/movieDb.js';
+} from '../../services/movieDbAPI/movieDb.js';
 
 //Here I try to use class component instead of function in order to get familiar with it
 

@@ -25,9 +25,9 @@ function addComparedId(state, id) {
 }
 
 function removeId(state, id) {
-  let comparedId = [...state.comparedId];
-  comparedId.splice(comparedId.indexOf(id), 1);
-  return { ...state, comparedId }
+  let comparedIds = [...state.comparedIds];
+  comparedIds.splice(comparedIds.indexOf(id), 1);
+  return { ...state, comparedIds }
 }
 
 export default function generalReducer(state = initialState, action) {
@@ -62,7 +62,7 @@ export default function generalReducer(state = initialState, action) {
     case CLEAR_COMPARED_MOVIES:
       return {
         ...state,
-        comparedId: [],
+        comparedIds: [],
       };
     case REMOVE_COMPARED_MOVIE:
       return removeId(state, action.payload);

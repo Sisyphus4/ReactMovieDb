@@ -4,11 +4,7 @@ import {
   GET_MOVIE_FAILURE,
   GET_EXISTED_MOVIE_SUCCESS,
 } from '../types/types';
-import axios from 'axios';
-import {
-  APIkey,
-  getMovieRequest,
-} from '../../movieDbAPI/movieDb';
+import MovieDbService from '../../services/movieDbAPI/MovieDbService';
 
 const getMovieSuccess = movie => ({
   type: GET_MOVIE_SUCCESS,
@@ -32,7 +28,6 @@ const getMovieFailure = error => ({
 });
 
 export const getMovie = (id) => {
-  const request = getMovieRequest + id + APIkey;
   return (dispatch, getState) => {
     // Check if the movie is already downloaded
     let neededMovie = getState().movieReducer.detailedMovies.find((movie) => movie.id === id);
@@ -43,10 +38,9 @@ export const getMovie = (id) => {
     else {
       //Otherwise download the new one
       dispatch(getMovieStarted());
-      axios
-        .get(request)
-        .then(res => {
-          dispatch(getMovieSuccess(res.data));
+      MovieDbService.getData('movie', id)
+        .then((res) => {
+          dispatch(getMovieSuccess(res));
         })
         .catch(err => {
           dispatch(getMovieFailure(err.message));
