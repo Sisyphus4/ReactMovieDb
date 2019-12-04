@@ -14,7 +14,7 @@ import { NoMatch } from './NoMatch'
 export const AppRouter = () => {
   return (
     <Router>
-        <NavBar />
+        <Route component={NavBar} />
         <Switch>
           <Route path='/' exact component={PopularMoviesContainer} />
           <Route path='/about/' component={About} />
