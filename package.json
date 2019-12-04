@@ -37,6 +37,7 @@
     "css-loader": "^3.2.0",
     "eslint": "^6.7.2",
     "eslint-plugin-react": "^7.16.0",
+    "mustache": "^3.1.0",
     "react-scripts": "latest",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",

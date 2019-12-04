@@ -1,28 +1,22 @@
 import axios from 'axios';
-import {
-    getPopularMoviesRequest,
-    APIkey,
-    getMovieRequest,
-    getCastRequest,
-    searchMovieRequest,
-    query,
-} from '../../services/movieDbAPI/movieDb';
+import movieDbRequests from './movieDbconfig'
+import Mustache from 'mustache'
 
 class MovieDbService {
     getData(type, id) {
         let request;
         switch (type) {
             case 'movie':
-                request = getMovieRequest + id + APIkey;
+                request = Mustache.render("{{{getMovieRequest}}}" + id + "?api_key={{APIkey}}", movieDbRequests);
                 break;
             case 'movies':
-                request = getPopularMoviesRequest;
+                request = Mustache.render("{{{getPopularMoviesRequest}}}&api_key={{APIkey}}", movieDbRequests);
                 break;
             case 'cast':
-                request = getMovieRequest + id + getCastRequest + APIkey;
+                request = Mustache.render("{{{getMovieRequest}}}" + id + "{{{getCastRequest}}}?api_key={{APIkey}}", movieDbRequests);
                 break;
             case 'searchMovie':
-                request = searchMovieRequest + APIkey + query + id;
+                request = Mustache.render("{{{searchMovieRequest}}}?api_key={{APIkey}}&query=" + id, movieDbRequests);
                 break;
         }
         const result = axios
