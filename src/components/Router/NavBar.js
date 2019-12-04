@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { SearchBar } from '../Search/SearchBar'
 import { useHistory } from 'react-router-dom';
 import { searchMovie } from '../../redux/actions/searchMovie';
@@ -21,18 +21,32 @@ export const NavBar = () => {
         history.push('/searchResults');
     }
 
+    const handleClick = (e) => {
+        if (count === 0) {
+            e.preventDefault();
+        }
+    }
+
     return (
         <nav className='NavBar'>
-            <Link className="NavBar-Link" to="/">
-                <button className='NavBar-NavButton' type='button'>Home</button>
-            </Link>
-            <Link className='NavBar-Link' to='/Compare/'>
-                <button className='NavBar-NavButton' type='button' disabled={!count}>Compare({count}/4)</button>
-            </Link>
-            <Link className='NavBar-Link' to='/about/'>
-                <button className='NavBar-NavButton' type='button'>About</button>
-            </Link>
-            <SearchBar OnSubmit={(searchInputValue, e) => handleSubmit(searchInputValue, e)} OnMovieClick={handleMovieClick} />
-        </nav>
-    );
+            <NavLink className='NavBar-Link'
+                activeClassName='NavBar-Link-active'
+                exact to="/">
+                Home
+        </NavLink>
+            <NavLink className='NavBar-Link'
+                exact to='/Compare/'
+                activeClassName='NavBar-Link-active'
+                onClick={(e) => handleClick(e)}>
+                Compare({count})
+        </NavLink>
+            <NavLink className='NavBar-Link'
+                activeClassName='NavBar-Link-active'
+                exact to='/about/'>
+                About
+        </NavLink>
+            <SearchBar
+                OnSubmit={(searchInputValue, e) => handleSubmit(searchInputValue, e)}
+                OnMovieClick={handleMovieClick} />
+        </nav>)
 };
