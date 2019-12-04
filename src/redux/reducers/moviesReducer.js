@@ -6,8 +6,6 @@ import {
   CLEAR_COMPARED_MOVIES,
   SEARCH_MOVIE_SUCCESS,
   REMOVE_COMPARED_MOVIE,
-  SET_ACTIVE_TRUE,
-  SET_ACTIVE_FALSE,
 } from '../types/types.js';
 
 const initialState = {
@@ -15,22 +13,23 @@ const initialState = {
   movies: [],
   error: '',
   searchResults: [],
-  comparedId: [],
-  inputActive: false,
+  comparedIds: [],
 };
 
+const MaxComparedMoviesLength = 4;
+
 function addComparedId(state, id) {
-  var comparedId = [...state.comparedId];
-  comparedId.unshift(id); // provides liquidity to array
-  if (comparedId.length > 2)  // maximum 2 movies kept for comparison
-    comparedId.pop();
-  return { ...state, comparedId }
+  var comparedIds = [...state.comparedIds];
+  comparedIds.push(id); // provides liquidity to array
+  if (comparedIds.length > MaxComparedMoviesLength)  // maximum movies kept for comparison
+    comparedIds.shift();
+  return { ...state, comparedIds }
 }
 
 function removeId(state, id) {
-  let comparedId = [...state.comparedId];
-  comparedId.splice(comparedId.indexOf(id), 1);
-  return { ...state, comparedId }
+  let comparedIds = [...state.comparedIds];
+  comparedIds.splice(comparedIds.indexOf(id), 1);
+  return { ...state, comparedIds }
 }
 
 export default function generalReducer(state = initialState, action) {
@@ -65,20 +64,10 @@ export default function generalReducer(state = initialState, action) {
     case CLEAR_COMPARED_MOVIES:
       return {
         ...state,
-        comparedId: [],
+        comparedIds: [],
       };
     case REMOVE_COMPARED_MOVIE:
       return removeId(state, action.payload);
-    case SET_ACTIVE_TRUE:
-      return {
-        ...state,
-        inputActive: true,
-      };
-    case SET_ACTIVE_FALSE:
-      return {
-        ...state,
-        inputActive: false,
-      };
     default:
       return state;
   }

@@ -2,13 +2,9 @@ import {
   SEARCH_MOVIE_SUCCESS,
   GET_MOVIES_FAILURE,
 } from '../types/types.js';
-import axios from 'axios';
 
-import {
-  searchMovieRequest,
-  APIkey,
-  query,
-} from '../../movieDbAPI/movieDb';
+import MovieDbService from '../../services/movieDbAPI/MovieDbService';
+
 
 
 const searchMovieSuccess = movies => ({
@@ -24,16 +20,15 @@ const getMoviesFailure = error => ({
 });
 
 export const searchMovie = (searchedMovie) => {
-  const request = searchMovieRequest + APIkey + query + searchedMovie;
-  
-  return dispatch => {
-    axios
-      .get(request)
-      .then(res => {
-        dispatch(searchMovieSuccess(res.data.results));
-      })
-      .catch(err => {
-        dispatch(getMoviesFailure(err.message));
-      });
-  };
+  return searchedMovie
+    ? dispatch => {
+      MovieDbService.getData('searchMovie', searchedMovie)
+        .then(res => {
+          dispatch(searchMovieSuccess(res.results.slice(0,10)));
+        })
+        .catch(err => {
+          dispatch(getMoviesFailure(err.message));
+        });
+    }
+    : dispatch => dispatch(searchMovieSuccess([]));
 };

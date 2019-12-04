@@ -1,21 +1,34 @@
-import React, { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect, useRef } from 'react';
 import { MovieList } from './MovieList';
 import { SearchForm } from './SearchForm'
-import {
-    SET_ACTIVE_FALSE,
-} from '../../redux/types/types';
 
-export const SearchBar = () => {
-    const dispatch = useDispatch();
+
+export const SearchBar = (props) => {
     const searchInput = useRef(null);
+    const [active, setActive] = useState(false);
 
     // If user clicks outside input, we make suggested list invisible
     const handleOutsideClick = (e) => {
         if (searchInput.current && !searchInput.current.contains(e.target)) {
-            dispatch({ type: SET_ACTIVE_FALSE });
+            setActive(false);
         }
     }
+
+    const handleFocus = () => {
+        setActive(true);
+    }
+
+    const handleBlurClick = () => {
+        searchInput.current.blur();
+    }
+
+    const handleSubmit = (searchInputValue, e) => {
+        props.OnSubmit(searchInputValue, e);
+    }
+
+    const OnMovieClick = (movie) => {
+        props.OnMovieClick(movie);
+    };
 
     useEffect(() => {
         document.addEventListener('click', handleOutsideClick, false);
@@ -25,7 +38,12 @@ export const SearchBar = () => {
     }, [1]);
 
     return <div className='SearchBar'>
-        <SearchForm ref={searchInput} />
-        <MovieList />
+        <SearchForm ref={searchInput} 
+        OnFocus={() => handleFocus()} 
+        OnSubmit={(searchInputValue, e)=> handleSubmit(searchInputValue, e)}/>
+        <MovieList 
+        OnBlurClick={handleBlurClick} 
+        active={active} 
+        OnMovieClick={(movie) => OnMovieClick(movie)} />
     </div>
 }

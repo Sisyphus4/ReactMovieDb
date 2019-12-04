@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import {
     imgsrc300,
-} from '../../movieDbAPI/movieDb';
+} from '../../services/movieDbAPI/movieDb';
 
 export const MovieDescription = () => {
     const movie = useSelector(state => state.movieReducer.movie);

@@ -2,19 +2,13 @@ import React from 'react'
 import { debounce } from 'underscore';
 import { searchMovie } from '../../redux/actions/searchMovie';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import {
-    SET_ACTIVE_TRUE,
-} from '../../redux/types/types';
+
 
 export const SearchForm = React.forwardRef((props, ref) => {
     const dispatch = useDispatch();
-    const history = useHistory();
 
-    const handleSubmit = (args, e) => {
-        e.preventDefault();
-        dispatch(searchMovie(args));
-        history.push('/searchResults');
+    const handleSubmit = (searchInputValue, e) => {
+        props.OnSubmit(searchInputValue, e);
     }
 
     // Debounce dispatch for cases when user is typing fast
@@ -22,13 +16,12 @@ export const SearchForm = React.forwardRef((props, ref) => {
 
     // We dinamically display movies that user is searching
     const handleTyping = (event) => {
-        if(event.target.value)
         debouncedDispatch(event.target.value);
     }
 
     // We make suggested list visible once the input is focused
     const handleFocus = () => {
-        dispatch({ type: SET_ACTIVE_TRUE });
+        props.OnFocus();
     }
     return <form onSubmit={(e) => handleSubmit(document.getElementById('searchBar').value, e)}>
         <input ref={ref}

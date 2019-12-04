@@ -3,12 +3,7 @@ import {
   GET_MOVIES_SUCCESS,
   GET_MOVIES_FAILURE,
 } from '../types/types.js';
-import axios from 'axios';
-
-import {
-  getPopularMoviesRequest,
-} from '../../movieDbAPI/movieDb';
-
+import MovieDbService from '../../services/movieDbAPI/MovieDbService';
 
 const getMoviesSuccess = movies => ({
   type: GET_MOVIES_SUCCESS,
@@ -29,13 +24,12 @@ const getMoviesFailure = error => ({
 export const getMovies = () => {
   return dispatch => {
     dispatch(getMoviesStarted());
-    axios
-      .get(getPopularMoviesRequest)
-      .then(res => {
-        dispatch(getMoviesSuccess(res.data.results));
-      })
-      .catch(err => {
-        dispatch(getMoviesFailure(err.message));
-      });
+    MovieDbService.getData('movies')
+    .then((res) => {
+      dispatch(getMoviesSuccess(res.results));
+    })
+    .catch(err => {
+      dispatch(getMoviesFailure(err.message));
+    });
   };
 };

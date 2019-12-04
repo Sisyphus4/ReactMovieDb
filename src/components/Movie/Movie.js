@@ -19,10 +19,15 @@ export const Movie = props => {
       }
     })
   }
+
+  const handleDeleteClick = () => {
+    props.removeComparedMovie(id);
+  }
+
   const id = parseInt(props.match.params.id, 10); // movie's id
   useEffect(() => {
     props.getMovie(id);
-  }, [1]);
+  });
 
   return props.loading
     ? <Spinner />
@@ -30,7 +35,11 @@ export const Movie = props => {
       ? (
         <div className='TheMovie'>
           <MovieDescription />
-          <button className='TheMovie-CompareButton' type='button' onClick={handleCompareClick}>Add to Compare</button>
+          {!(props.comparedIds && props.comparedIds.some((elem) => elem === id))
+            ? <button className='TheMovie-CompareButton' type='button'
+              onClick={handleCompareClick}>Add to Compare</button>
+            : <button className='TheMovie-CompareButton' type='button'
+              onClick={handleDeleteClick}>Remove from Compare</button>}
           <MovieCastContainer />
         </div>)
       : <div>{props.error}</div>

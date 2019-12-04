@@ -1,25 +1,23 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 
 
-export const MovieList = () => {
+export const MovieList = (props) => {
     const searchResults = useSelector(state => state.moviesReducer.searchResults);
-    const active = useSelector(state => state.moviesReducer.inputActive);
-
-    var visibility = active ? 'visible' : 'hidden';
-
-    const history = useHistory();   
+    
+    var visibility = props.active ? 'visible' : 'hidden';
 
     const handleMovieClick = (movie) => {
-        history.push('/movie/' + movie.id); // send us to movie page
-        location.reload();
+        props.OnBlurClick();
+        props.OnMovieClick(movie);
     };
 
-    return <div id='MovieList' className='MovieList' style={{ visibility: visibility }}>
+    return <div className='MovieList' style={{ visibility: visibility }}>
         <ul>
             {searchResults.map(movie =>
-                <li key = {movie.id} onClick={() => handleMovieClick(movie)}>
+                <li key = {movie.id} 
+                onMouseDown={e => e.preventDefault()}
+                onMouseUp={() => handleMovieClick(movie)}>
                     <p className='MovieList-Title'>{movie.original_title}</p> 
                     <p className='MovieList-Date'>{movie.release_date}</p></li>
             )}

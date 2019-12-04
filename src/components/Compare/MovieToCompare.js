@@ -2,17 +2,22 @@ import React from 'react'
 
 import {
     imgsrc185,
-} from '../../movieDbAPI/movieDb.js';
+} from '../../services/movieDbAPI/movieDb.js';
 
 export const MovieToCompare = (props) => {
     const imgsrc = imgsrc185 + props.movie.poster_path;
+
+    const handleMovieClick = (movie) => {
+        props.OnMovieClick(movie);
+    }
+
     return (
         <>
-            <h1>{props.movie.original_title}</h1>
-            <img src={imgsrc} />
-            <p>{props.movie.release_date}</p>
-            <p>{props.movie.budget.toLocaleString()}</p>
-            <p>{props.movie.popularity}</p>
+            <h3 onClick={() => handleMovieClick(props.movie)}>{props.movie.original_title}</h3>
+            <img src={imgsrc} onClick={() => handleMovieClick(props.movie)} />
+            <p>Release: {props.movie.release_date}</p>
+            <p>Budget $: {props.movie.budget ? props.movie.budget.toLocaleString() : '-'}</p>
+            <p>Average vote: {props.movie.vote_average}/10</p>
         </>
     )
 }

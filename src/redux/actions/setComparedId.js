@@ -8,8 +8,7 @@ const setCompare = id => ({
 });
 
 export const setComparedId = (id) => {
-  return (dispatch, getState) => {
-    if (id != getState().moviesReducer.comparedId[0] && id != getState().moviesReducer.comparedId[1])
+  return (dispatch) => {
       dispatch(setCompare(id));
   }
 };

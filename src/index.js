@@ -20,7 +20,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className='Container'>
         <ReactNotifications />
         <AppRouter />
       </div>
