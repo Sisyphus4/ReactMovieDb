@@ -16,10 +16,12 @@ const initialState = {
   comparedIds: [],
 };
 
+const MaxComparedMoviesLength = 4;
+
 function addComparedId(state, id) {
   var comparedIds = [...state.comparedIds];
   comparedIds.push(id); // provides liquidity to array
-  if (comparedIds.length > 4)  // maximum movies kept for comparison
+  if (comparedIds.length > MaxComparedMoviesLength)  // maximum movies kept for comparison
     comparedIds.shift();
   return { ...state, comparedIds }
 }

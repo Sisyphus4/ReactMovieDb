@@ -17,9 +17,7 @@ body{
   overflow-x:hidden;
 }
 .PopularMovies{
-  display:flex;
-  justify-content: space-around;
-  flex-wrap:wrap;
+  text-align: center;
 }
 
 .PopularMovies h1{
@@ -28,6 +26,9 @@ body{
 }
 
 .OneOfMovies {
+  display: inline-block;
+  margin-left:10px;
+  margin-bottom:10px;
   width:250px;
   height: 500px;
   border: solid 1px;
@@ -39,6 +40,8 @@ body{
   height: 80px;
 }
 .OneOfMovies img, .oneOfComparedMovies img, .oneOfMovies h2, .oneOfComparedMovies h3{
+  width: 185px;
+  height: 278px;
   cursor: pointer;
 }
 
